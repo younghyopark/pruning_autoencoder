@@ -297,3 +297,33 @@ class FC_supermask_decode_nonstochastic(nn.Module):
 #         output = F.log_softmax(x, dim=1)
 #         return output
 
+class FC_original_encode(nn.Module):
+    def __init__(self, device, x_dim=784, h_dim1=512, h_dim2=256,h_dim3=128,h_dim4=64):
+        super(FC_original_encode, self).__init__()
+        self.fc1 = nn.Linear(x_dim, h_dim1)
+        self.fc2 = nn.Linear(h_dim1, h_dim2)
+        self.fc3 = nn.Linear(h_dim2, h_dim3)
+        self.fc4 = nn.Linear(h_dim3, h_dim4)
+    
+    def forward(self, x):
+        h = F.relu(self.fc1(x))
+        h = F.relu(self.fc2(h))
+        h = F.relu(self.fc3(h))
+        h = self.fc4(h)
+        return h
+    
+    
+class FC_original_decode(nn.Module):
+    def __init__(self, device, x_dim=784, h_dim1=512, h_dim2=256,h_dim3=128,h_dim4=64):
+        super(FC_original_decode, self).__init__()
+        self.fc4 = nn.Linear(h_dim4, h_dim3)
+        self.fc3 = nn.Linear(h_dim3, h_dim2)
+        self.fc2 = nn.Linear(h_dim2, h_dim1)
+        self.fc1 = nn.Linear(h_dim1, x_dim)
+    
+    def forward(self, z):
+        h = F.relu(self.fc4(z))
+        h = F.relu(self.fc3(h))
+        h = F.relu(self.fc2(h))
+        return self.fc1(h)
+    
