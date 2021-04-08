@@ -1,1 +1,2 @@
-# pruning_autoencoder
+# Pruning Autoencoders
+
