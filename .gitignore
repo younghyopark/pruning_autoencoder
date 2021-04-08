@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 # folder
-.results/
-.dataset/
+results
+dataset
