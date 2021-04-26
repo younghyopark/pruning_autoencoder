@@ -35,7 +35,7 @@ parser.add_argument('-pr','--pruning_ratio', type=float, help ='if using non-sto
 
 args = parser.parse_args()
 
-result_dir = f'results/nae/{args.run}_leaveout_{args.leave}'
+result_dir = f'results/new/{args.run}_leaveout_{args.leave}'
 if not os.path.isdir(result_dir):
     os.mkdir(result_dir)
     print(f'creating {result_dir}')

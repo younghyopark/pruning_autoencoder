@@ -29,31 +29,22 @@ from tensorboardX import SummaryWriter
 parser = argparse.ArgumentParser()
 parser.add_argument('--device', type=int, help='cuda device index', default=0)
 parser.add_argument('--run', type=str, help='experiment name', default='nae')
-parser.add_argument('--leave', type=int, help ='leave out this class MNIST', required=True)
-parser.add_argument('--enc_reg', type=float, default=None)
-parser.add_argument('--dec_reg', type=float, default=None)
-
-
 args = parser.parse_args()
-result_predir = 'experiments/regularized'
-result_dir = f'experiments/regularized/leaveout_{args.leave}_enc_reg_{args.enc_reg}_dec_reg_{args.dec_reg}'
+
+result_dir = f'modified_results/experiments/{args.run}'
 if not os.path.isdir(result_dir):
-    os.makedirs(result_dir)
+    os.mkdir(result_dir)
     print(f'creating {result_dir}')
 shutil.copy('nae_experiment.py', f'{result_dir}/nae_experiment.py')
 print(f'file copied: ', f'{result_dir}/nae_experiment.py')
-
 
 device = args.device
 n_ae_epoch = 100
 n_nae_epoch = 50
 gamma = 1.
-l2_norm_reg = args.dec_reg
-l2_norm_reg_en = args.enc_reg
+l2_norm_reg = None
+l2_norm_reg_en = 0.0001 
 spherical = True 
-leave_out = args.leave
-batch_size = 128
-
 
 
 def predict(m, dl, device, flatten=False):
@@ -68,19 +59,18 @@ def predict(m, dl, device, flatten=False):
 
 
 '''load dataset'''
-ds = MNISTLeaveOut('dataset', [leave_out], split='training', transform=ToTensor(), download=True)
-in_train_dl = DataLoader(ds, batch_size=batch_size, shuffle=True, num_workers=10)
-ds = MNISTLeaveOut('dataset', [leave_out], split='validation', transform=ToTensor(), download=True)
-in_val_dl = DataLoader(ds, batch_size=batch_size, shuffle=True, num_workers=10)
-ds = MNISTLeaveOut('dataset', [leave_out], split='evaluation', transform=ToTensor(), download=True)
-in_test_dl = DataLoader(ds, batch_size=batch_size, shuffle=True, num_workers=10)
+ds = MNISTLeaveOut('dataset', [9], split='training', transform=ToTensor(), download=True)
+in_train_dl = DataLoader(ds, batch_size=128, shuffle=True, num_workers=10)
+ds = MNISTLeaveOut('dataset', [9], split='validation', transform=ToTensor(), download=True)
+in_val_dl = DataLoader(ds, batch_size=128, shuffle=True, num_workers=10)
+ds = MNISTLeaveOut('dataset', [9], split='evaluation', transform=ToTensor(), download=True)
+in_test_dl = DataLoader(ds, batch_size=128, shuffle=True, num_workers=10)
 
-in_digits = list(set(list(range(10)))-set([leave_out]))
+in_digits = list(range(9))
 ds = MNISTLeaveOut('dataset', in_digits, split='validation', transform=ToTensor(), download=True)
-out_val_dl = DataLoader(ds, batch_size=batch_size, shuffle=True, num_workers=10)
+out_val_dl = DataLoader(ds, batch_size=128, shuffle=True, num_workers=10)
 ds = MNISTLeaveOut('dataset', in_digits, split='evaluation', transform=ToTensor(), download=True)
-out_test_dl = DataLoader(ds, batch_size=batch_size, shuffle=True, num_workers=10)
-
+out_test_dl = DataLoader(ds, batch_size=128, shuffle=True, num_workers=10)
 
 
 '''build model'''
@@ -116,11 +106,6 @@ for i_epoch in tqdm(range(n_epoch)):
             '''val recon error'''
             val_err = predict(model, in_val_dl, device)
             writer.add_scalar('ae/val_recon', val_err.mean().item(), i + 1)
-            
-            in_pred = predict(model, in_test_dl, device)
-            out_pred = predict(model, out_test_dl, device)
-            auc = roc_btw_arr(out_pred, in_pred)
-            writer.add_scalar('ae/AUROC', auc, i + 1)
 
         i += 1
 
@@ -151,47 +136,47 @@ auc = roc_btw_arr(out_pred, in_pred)
 print(f'[Conventional Autoencoder][vs9 AUC]: {auc}')
 
 
-# '''NAE PASS'''
-# opt = Adam(model.parameters(), lr=0.00001)
+'''NAE PASS'''
+opt = Adam(model.parameters(), lr=0.00001)
 
-# print('starting NAE training...')
-# i = 0
-# n_epoch = n_nae_epoch; l_result = []
-# for i_epoch in tqdm(range(n_epoch)):
-#     for x, _ in tqdm(in_train_dl):
-#         x = x.cuda(device)
-#         d_result = model.train_step(x, opt, clip_grad=None)
+print('starting NAE training...')
+i = 0
+n_epoch = n_nae_epoch; l_result = []
+for i_epoch in tqdm(range(n_epoch)):
+    for x, _ in tqdm(in_train_dl):
+        x = x.cuda(device)
+        d_result = model.train_step(x, opt, clip_grad=None)
 
-#         writer.add_scalar('nae/loss', d_result['loss'], i + 1)
-#         writer.add_scalar('nae/energy_diff', d_result['pos_e'] - d_result['neg_e'], i + 1)
-#         writer.add_scalar('nae/pos_e', d_result['pos_e'], i + 1)
-#         writer.add_scalar('nae/neg_e', d_result['neg_e'], i + 1)
-#         writer.add_scalar('nae/z_norm', d_result['z_norm'], i + 1)
-#         writer.add_scalar('nae/z_neg_norm', d_result['z_neg_norm'], i + 1)
-#         writer.add_scalar('nae/encoder_l2', d_result['encoder_norm'], i + 1)
-#         writer.add_scalar('nae/decoder_l2', d_result['decoder_norm'], i + 1)
+        writer.add_scalar('nae/loss', d_result['loss'], i + 1)
+        writer.add_scalar('nae/energy_diff', d_result['pos_e'] - d_result['neg_e'], i + 1)
+        writer.add_scalar('nae/pos_e', d_result['pos_e'], i + 1)
+        writer.add_scalar('nae/neg_e', d_result['neg_e'], i + 1)
+        writer.add_scalar('nae/z_norm', d_result['z_norm'], i + 1)
+        writer.add_scalar('nae/z_neg_norm', d_result['z_neg_norm'], i + 1)
+        writer.add_scalar('nae/encoder_l2', d_result['encoder_norm'], i + 1)
+        writer.add_scalar('nae/decoder_l2', d_result['decoder_norm'], i + 1)
 
-#         if i % 100 == 0:
-#             x_neg = d_result['x_neg']
-#             img_grid = make_grid(x_neg.detach().cpu(), nrow=10, range=(0, 1))
-#             writer.add_image('nae/sample', img_grid, i + 1)
-#             save_image(img_grid, f'{result_dir}/nae_sample_{i}.png')
+        if i % 100 == 0:
+            x_neg = d_result['x_neg']
+            img_grid = make_grid(x_neg.detach().cpu(), nrow=10, range=(0, 1))
+            writer.add_image('nae/sample', img_grid, i + 1)
+            save_image(img_grid, f'{result_dir}/nae_sample_{i}.png')
 
-#             '''vs9 AUC'''
-#             in_pred = predict(model, in_test_dl, device)
-#             out_pred = predict(model, out_test_dl, device)
-#             auc = roc_btw_arr(out_pred, in_pred)
-#             writer.add_scalar('nae/vs9AUC', auc, i + 1)
-#             print(f'[Normalized AE][vs9 AUC]: {auc}')
+            '''vs9 AUC'''
+            in_pred = predict(model, in_test_dl, device)
+            out_pred = predict(model, out_test_dl, device)
+            auc = roc_btw_arr(out_pred, in_pred)
+            writer.add_scalar('nae/vs9AUC', auc, i + 1)
+            print(f'[Normalized AE][vs9 AUC]: {auc}')
 
-#         i += 1
-#     torch.save(model.state_dict(), f'{result_dir}/nae_{i_epoch}.pkl')
-# torch.save(model.state_dict(), f'{result_dir}/nae.pkl')
+        i += 1
+    torch.save(model.state_dict(), f'{result_dir}/nae_{i_epoch}.pkl')
+torch.save(model.state_dict(), f'{result_dir}/nae.pkl')
 
-# '''vs9 AUC'''
-# in_pred = predict(model, in_test_dl, device)
-# out_pred = predict(model, out_test_dl, device)
-# auc = roc_btw_arr(out_pred, in_pred)
-# print(f'[Normalized AE][vs9 AUC]: {auc}')
+'''vs9 AUC'''
+in_pred = predict(model, in_test_dl, device)
+out_pred = predict(model, out_test_dl, device)
+auc = roc_btw_arr(out_pred, in_pred)
+print(f'[Normalized AE][vs9 AUC]: {auc}')
 
 

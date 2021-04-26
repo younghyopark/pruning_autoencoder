@@ -131,3 +131,7 @@ dmypy.json
 # folder
 results/
 dataset/
+experiments/
+main_results/
+modified_results/
+snip_results/

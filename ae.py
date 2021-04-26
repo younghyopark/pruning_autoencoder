@@ -198,6 +198,38 @@ class NAE(AE):
         return d_result
     
     
+    def train_step_ae_finetune(self, x, opt, locked_masks, clip_grad=None):
+        opt.zero_grad()
+        z = self.encode(x)
+        recon = self.decoder(z)
+        error = (x - recon) ** 2
+        z_norm = (z ** 2).mean()
+        recon_error = error.mean()
+        loss = recon_error
+
+        # weight regularization
+        decoder_norm = self.weight_norm(self.decoder)
+        encoder_norm = self.weight_norm(self.encoder)
+        if self.l2_norm_reg is not None:
+            loss = loss + self.l2_norm_reg * decoder_norm
+        if self.l2_norm_reg_en is not None:
+            loss = loss + self.l2_norm_reg_en * encoder_norm
+        loss.backward()
+        
+        for n, w in self.named_parameters():
+            if w.grad is not None and 'weight' in n:
+                w.grad[locked_masks[w.shape]]=0
+        
+        if clip_grad is not None:
+            all_params = list(chain(*[g['params'] for g in opt.param_groups]))
+            torch.nn.utils.clip_grad_norm_(all_params, max_norm=clip_grad)
+        opt.step()
+        d_result = {'loss': loss.item(), 'z_norm': z_norm.item(), 'recon_error': recon_error.item(),
+                    'decoder_norm': decoder_norm.item(), 'encoder_norm': encoder_norm.item()}
+        return d_result
+
+
+
     def train_step(self, x, opt, clip_grad=None):
         self._set_z_shape(x)
 
@@ -245,3 +277,54 @@ class NAE(AE):
                     'decoder_norm': decoder_norm.item(), 'encoder_norm': encoder_norm.item()}
         return d_result
 
+
+    def train_step_finetune(self, x, opt, locked_masks,clip_grad=None):
+        self._set_z_shape(x)
+
+        # negative sample
+        d_sample = self.sample(len(x), x.device, replay=self.replay)
+        x_neg = d_sample['sample_x']
+
+        opt.zero_grad()
+        z_neg = self.encode(x_neg)
+        recon_neg = self.decoder(z_neg)
+        neg_e = (x_neg - recon_neg) ** 2
+
+        # ae recon pass
+        z = self.encode(x)
+        recon = self.decoder(z)
+        pos_e = (x - recon) ** 2
+
+        loss = pos_e.mean() - neg_e.mean()
+
+        if self.gamma is not None:
+            loss += self.gamma * (neg_e ** 2).mean()
+
+        # regularization
+        z_norm = (z ** 2).mean()
+        z_neg_norm = (z_neg ** 2).mean()
+
+        # weight regularization
+        decoder_norm = self.weight_norm(self.decoder)
+        encoder_norm = self.weight_norm(self.encoder)
+        if self.l2_norm_reg is not None:
+            loss = loss + self.l2_norm_reg * decoder_norm
+        if self.l2_norm_reg_en is not None:
+            loss = loss + self.l2_norm_reg_en * encoder_norm
+
+        loss.backward()
+
+        for n, w in self.named_parameters():
+            if w.grad is not None and 'weight' in n:
+                w.grad[locked_masks[w.shape]]=0
+
+        if clip_grad is not None:
+            all_params = list(chain(*[g['params'] for g in opt.param_groups]))
+            torch.nn.utils.clip_grad_norm_(all_params, max_norm=clip_grad)
+        opt.step()
+        d_result = {'pos_e': pos_e.mean().item(), 'neg_e': neg_e.mean().item(),
+                    'x_neg': x_neg.detach().cpu(), 'recon_neg': recon_neg.detach().cpu(),
+                    'loss': loss.item(), 'sample': x_neg.detach().cpu(),
+                    'z_norm': z_norm.item(), 'z_neg_norm': z_neg_norm.item(),
+                    'decoder_norm': decoder_norm.item(), 'encoder_norm': encoder_norm.item()}
+        return d_result
