@@ -81,7 +81,6 @@ out_test_dl = DataLoader(ds, batch_size=batch_size, shuffle=True, num_workers=10
 
 
 '''build model'''
-z_dim = 17
 if args.stochasticity =='stochastic':
     encoder = FC_supermask_encode(device)#ConvNet2FC(1, z_dim, nh=8, nh_mlp=1024, out_activation='linear')
     decoder = FC_supermask_decode(device) #DeConvNet2(z_dim, 1, nh=8, out_activation='sigmoid')

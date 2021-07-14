@@ -67,6 +67,104 @@ class GetSubnet(autograd.Function):
         # send the gradient g straight-through on the backward pass.
         return g, None
 
+class AE(nn.Module):
+    def __init__(self, x_dim, h_dim1, h_dim2, h_dim3,h_dim4):
+        super(AE, self).__init__()
+        self.x_dim = x_dim
+        # encoder part
+        self.encoder = Encoder(x_dim, h_dim1, h_dim2,  h_dim3,h_dim4)
+        # decoder part
+        self.decoder = Generator(x_dim, h_dim1, h_dim2, h_dim3,h_dim4)
+    
+    def recon_error(self, x):
+        z = self.encoder(x)
+        x_recon = self.decoder(z)
+        return torch.norm((x_recon - x), dim=1)
+    
+    def forward(self, x):
+        z = self.encoder(x)
+        return self.decoder(z)
+    
+    def representation(self,x):
+        z = self.encoder(x)
+        return z
+    
+    def intermediate(self,x,layer):
+        shapes = [(16,32),(16,16),(8,16),(8,8)]
+        if layer<4:
+            inter= self.encoder.intermediate(x,layer)
+            return inter, shapes[layer]
+        else:
+            inter = self.encoder(x)
+            inter= self.decoder.intermediate(inter,layer-4)
+            return inter, shapes[2-layer]
+            
+        
+class Encoder(nn.Module):
+    def __init__(self, x_dim, h_dim1, h_dim2,h_dim3,h_dim4):
+        super(Encoder, self).__init__()
+        self.fc1 = SupermaskLinear(x_dim, h_dim1)
+        self.fc2 = SupermaskLinear(h_dim1, h_dim2)
+        self.fc3 = SupermaskLinear(h_dim2, h_dim3)
+        self.fc4 = SupermaskLinear(h_dim3,h_dim4)
+    
+    def forward(self, x):
+        h = F.relu(self.fc1(x))
+        h = F.relu(self.fc2(h))
+        h = F.relu(self.fc3(h))
+        h = self.fc4(h)
+        return h
+    
+    def intermediate(self,x,layer):
+        if layer==0:
+            h = F.relu(self.fc1(x))
+        elif layer==1:
+            h = F.relu(self.fc1(x))
+            h = F.relu(self.fc2(h))
+        elif layer==2:
+            h = F.relu(self.fc1(x))
+            h = F.relu(self.fc2(h))
+            h = F.relu(self.fc3(h))
+        elif layer==3:
+            h = F.relu(self.fc1(x))
+            h = F.relu(self.fc2(h))
+            h = F.relu(self.fc3(h))
+            h = self.fc4(h)
+            
+        return h
+
+
+    
+class Generator(nn.Module):
+    def __init__(self, x_dim, h_dim1, h_dim2,h_dim3,h_dim4):
+        super(Generator, self).__init__()
+        self.fc4 = SupermaskLinear(h_dim4,h_dim3)
+        self.fc3 = SupermaskLinear(h_dim3, h_dim2)
+        self.fc2 = SupermaskLinear(h_dim2, h_dim1)
+        self.fc1 = SupermaskLinear(h_dim1, x_dim)
+    
+    def forward(self, z):
+        h = F.relu(self.fc4(z))
+        h = F.relu(self.fc3(h))
+        h = F.relu(self.fc2(h))
+        return self.fc1(h)
+    
+    def intermediate(self,x,layer):
+        if layer==0:
+            h = F.relu(self.fc4(x))
+        elif layer==1:
+            h = F.relu(self.fc4(x))
+            h = F.relu(self.fc3(h))
+        elif layer==2:
+            h = F.relu(self.fc4(x))
+            h = F.relu(self.fc3(h))
+            h = F.relu(self.fc2(h))
+        elif layer==3:
+            h = F.relu(self.fc4(x))
+            h = F.relu(self.fc3(h))
+            h = F.relu(self.fc2(h))
+            h = self.fc1(h)
+        return h
 
 
 class Supermask_ConvNet2FC(nn.Module):
@@ -208,9 +306,10 @@ class SupermaskLinear(nn.Linear):
 
         # NOTE: turn the gradient on the weights off
         self.weight.requires_grad = False
+        self
 
     def forward(self, x):
-        subnet = GetSubnet.apply(self.scores.abs(), sparsity)
+        subnet = GetSubnet.apply(self.scores.abs(), self.sparsity)
         w = self.weight * subnet
         return F.linear(x, w, self.bias)
         return x

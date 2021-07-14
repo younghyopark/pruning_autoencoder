@@ -135,3 +135,15 @@ experiments/
 main_results/
 modified_results/
 snip_results/
+
+back_to_basics/
+back_to_basics_2/
+btb/
+btb_modified/
+data/
+dataset/
+finetune_30/
+MNIST_DATASET/
+SVS_experiments/
+test/
+trained_models/

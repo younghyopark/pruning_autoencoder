@@ -404,7 +404,7 @@ class SupermaskLinear(nn.Linear):
         subnet = GetSubnet.apply(self.scores.abs(), args.sparsity)
         w = self.weight * subnet
         return F.linear(x, w, self.bias)
-        return x
+#         return x
         
         
 class FC_supermask_encode_nonstochastic(nn.Module):
