@@ -19,12 +19,12 @@ download_root = './dataset'
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--gpu",type=int, default=0, help="cuda index")
-parser.add_argument("--max_epoch",type=int, default=100, help="warming epoch")
-parser.add_argument("--save_dir",default='trained_models', help="warming epoch")
-parser.add_argument("--lr",default=0.001, help="warming epoch")
-parser.add_argument("--layer_num",type=int,default=784, help="warming epoch")
-parser.add_argument("--dimensions",type=str, help="input 6 dimensions separated by commas")
-parser.add_argument("--batch_size",type=int,default=64)
+parser.add_argument("--max_epoch",type=int, default=300, help="training_epoch")
+parser.add_argument("--save_dir",default='trained_models', help="saving_directions_for_trained_weights")
+parser.add_argument("--lr",default=0.01, help="learning_rate")
+parser.add_argument("--input_dim",type=int,default=784, help="input_dimensions")
+parser.add_argument("--dimensions",type=str, help="input 6 dimensions separated by commas", default = '512,256,64,16,0,0')
+parser.add_argument("--batch_size",type=int,default=256)
 parser.add_argument("--leave",type=int)
 parser.add_argument("--sigmoid", action='store_true')
 
@@ -36,7 +36,7 @@ dimensions = list(map(int,opt.dimensions.split(',')))
 if len(dimensions)!=6:
     raise('give me 6 dimensions for autoencoder network!')
 
-model = Fully_Connected_AE(784, dimensions,opt.sigmoid)
+model = Fully_Connected_AE(opt.input_dim, dimensions,opt.sigmoid)
 optimizer = torch.optim.Adam(model.parameters(), opt.lr)
 schedular = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=opt.max_epoch, eta_min=0, last_epoch=-1)
 

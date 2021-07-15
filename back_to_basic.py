@@ -16,7 +16,6 @@ import argparse
 from utils_for_me import *
 from torch.optim.lr_scheduler import CosineAnnealingLR
 
-
 torch.cuda.set_device(0)
 
 parser = argparse.ArgumentParser()
@@ -31,30 +30,13 @@ parser.add_argument('--supermask_epoch', type=int, help ='finetune_epoch', defau
 parser.add_argument('--mask', help ='how_to_choose_mask', required=True)
 parser.add_argument("--weights_to_prune",'-wtp', nargs="+", default=["1", "2","3","4","5", "6","7","8"])
 parser.add_argument("--sigmoid", action='store_true')
-
-
-
-# parser.add_argument('--feature', dest='feature', default=False, action='store_true')
+parser.add_argument("--training", action='store_true')
 
 
 args = parser.parse_args()
 print(args)
 
 torch.cuda.set_device(args.device)
-
-
-
-class opt:
-    layer_num=784
-    h_dim1=512
-    h_dim2=256
-    h_dim3=64
-    h_dim4=16
-    h_dim5 = 0
-    h_dim6 = 0
-    one_class=args.leave
-    lr=0.001
-    finetune_epoch=args.epoch
 
 
 mnist_transform = torchvision.transforms.Compose([
