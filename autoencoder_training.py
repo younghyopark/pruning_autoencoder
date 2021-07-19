@@ -12,6 +12,7 @@ import argparse
 from torchvision.datasets import MNIST, FashionMNIST
 import torchvision.transforms as transforms
 from model import Fully_Connected_AE
+from tensorboardX import SummaryWriter
 
 
 # download path 정의
@@ -21,16 +22,21 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--gpu",type=int, default=0, help="cuda index")
 parser.add_argument("--max_epoch",type=int, default=300, help="training_epoch")
 parser.add_argument("--save_dir",default='trained_models', help="saving_directions_for_trained_weights")
-parser.add_argument("--lr",default=0.1, help="learning_rate")
+parser.add_argument("--lr",default=0.001, help="learning_rate")
 parser.add_argument("--input_dim",type=int,default=784, help="input_dimensions")
 parser.add_argument("--dimensions",type=str, help="input 6 dimensions separated by commas", default = '512,256,64,16,0,0')
-parser.add_argument("--batch_size",type=int,default=256)
+parser.add_argument("--batch_size",type=int,default=512)
 parser.add_argument("--leave",type=int)
 parser.add_argument("--sigmoid", action='store_true')
+parser.add_argument("--run",type=str,default = None)
 
 
 opt = parser.parse_args()
 os.makedirs(os.path.join(opt.save_dir, 'pretrained','leave_out_{}'.format(opt.leave)), exist_ok=True)
+
+
+writer = SummaryWriter(logdir='./tensorboard/autoencoder_training/leaveout_{}_dim_{}_sigmoid_{}_{}'.format(opt.leave, opt.dimensions,opt.sigmoid,opt.run))
+
 
 dimensions = list(map(int,opt.dimensions.split(',')))
 if len(dimensions)!=6:
@@ -38,7 +44,7 @@ if len(dimensions)!=6:
 
 model = Fully_Connected_AE(opt.input_dim, dimensions,opt.sigmoid)
 optimizer = torch.optim.Adam(model.parameters(), opt.lr)
-schedular = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=opt.max_epoch, eta_min=0, last_epoch=-1)
+# scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=opt.max_epoch, eta_min=0, last_epoch=-1)
 
 mnist_transform = transforms.Compose([
     transforms.ToTensor(), 
@@ -72,12 +78,14 @@ model.to(device)
 print(model)
 
 model.train()
+global_step=0
 for epoch in range(1, opt.max_epoch+ 1):
     avg_loss = 0
     step = 0
     for i, (data,label) in enumerate(train_loader):
 #         data = data+0.5
 #         print(data.min(),data.max())
+        # print(data[0])
         step += 1
         data = data.reshape(-1,784).cuda()
         optimizer.zero_grad()
@@ -86,12 +94,16 @@ for epoch in range(1, opt.max_epoch+ 1):
         loss.backward()
         optimizer.step()
         avg_loss += loss
+        global_step+=1
+        writer.add_scalar('leaveout_{}'.format(opt.leave), loss, global_step)
         if i % 100 == 0:    
             print('Epoch [{}/{}] Batch [{}/{}]=> Loss: {:.5f}'.format(epoch, opt.max_epoch, i,len(train_loader), avg_loss / step))
-    
+    # scheduler.step()
+
+
     if epoch % 100 == 0:
         model_state = model.state_dict()
         #print(model_state)
-        ckpt_name = '{}_sigmoid_{}_epoch_{}'.format(model_name,opt.sigmoid,epoch)
-        ckpt_path = os.path.join(opt.save_dir,ckpt_name + ".pth")
+        ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,epoch, opt.run)
+        ckpt_path = os.path.join(opt.save_dir,'pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
         torch.save(model_state, ckpt_path)

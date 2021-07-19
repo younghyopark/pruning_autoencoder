@@ -638,15 +638,15 @@ def reconstrucion_errors(model, loader):
         data = data.reshape(-1,784).cuda()
         with torch.no_grad():
             recon_error = model.recon_error(data)
-            representation = model.representation(data)
+            # representation = model.representation(data)
 
         if i==0:
             ood_recon = recon_error
-            ood_latents = representation
+            # ood_latents = representation
 
         else:
             ood_recon=torch.cat((ood_recon,recon_error),0)
-            ood_latents=torch.cat((ood_latents,representation),0)
+            # ood_latents=torch.cat((ood_latents,representation),0)
             
     return ood_recon
 
@@ -677,7 +677,7 @@ def calculate_auroc(ind_recon, ood_recon):
             
     return auroc
 
-def check_reconstructed_images(model, writer, index, percent, string, ind_loader, ood_loader,result_dir):
+def check_reconstructed_images(model, writer, index, percent, string, ind_loader, ood_loader,result_dir, model_name, sigmoid, run):
     test_data = torch.stack([ind_loader.dataset[i][0] for i in range(10)])
     recon = model(test_data.reshape(-1,784).cuda()).detach().cpu()
     recon = torch.clamp(recon.view(len(recon), 1, 28, 28), 0, 1)
@@ -692,7 +692,7 @@ def check_reconstructed_images(model, writer, index, percent, string, ind_loader
     writer.add_image('reconstructed_images_{}'.format(string), img_grid, index)
     plt.figure()
     plt.imshow(img_grid.cpu().numpy().transpose(1,2,0))
-    plt.savefig(os.path.join(result_dir,'sparsity_{}_reconstructed_{}.png'.format(percent, string)))
+    plt.savefig(os.path.join(result_dir,'{}_{}_sigmoid_{}_sparsity_{:.3f}_run_{}_reconstructed.png'.format(string, model_name, sigmoid, percent, run)))
     plt.close()
 
 def check_representations(model,loader):

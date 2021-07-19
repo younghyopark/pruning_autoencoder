@@ -147,3 +147,8 @@ MNIST_DATASET/
 SVS_experiments/
 test/
 trained_models/
+
+pruning_results/
+tensorboard/
+trained_models/
+
