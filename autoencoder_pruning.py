@@ -32,6 +32,8 @@ parser.add_argument("--lr",type=float, default =0.001)
 parser.add_argument("--batch_size",type=int, default =256)
 parser.add_argument("--weights_to_prune",'-wtp', nargs="+", default=["1", "2","3","4","5", "6","7","8"])
 parser.add_argument("--sigmoid", action='store_true')
+parser.add_argument("--layerwise-pruning", action='store_true')
+
 
 
 opt = parser.parse_args()
@@ -104,7 +106,7 @@ os.makedirs(result_dir,exist_ok = True)
 
 range_1 = np.arange(0,0.7,0.1)
 range_2 = np.arange(0.7,0.9,0.05)
-range_3 = np.arange(0.9,1,0.01)
+range_3 = np.arange(0.9,1,0.001)
 xaxis_range = np.concatenate((range_1, range_2, range_3),0)
 
 # model = 
@@ -137,143 +139,288 @@ for i, percent in enumerate(tqdm(xaxis_range)):
 
     print(parameters_to_prune)
 
+    if not opt.layerwise_pruning:
+        print('pruning GLOBALLY!')
+        if opt.pruning_technique == 0 :
 
-    if opt.pruning_technique == 0 :
+            ## weights with small final weights are pruned
+            scores = pruned_model.state_dict()
+            scores = {k:abs(v) for k,v in scores.items()}
 
-        ## weights with small final weights are pruned
-        scores = pruned_model.state_dict()
-        scores = {k:abs(v) for k,v in scores.items()}
+            prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method = prune.L1Unstructured,
+            importance_scores = scores,
+            amount=percent)
 
-        prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method = prune.L1Unstructured,
-        importance_scores = scores,
-        amount=percent)
+        elif opt.pruning_technique == 1 :
 
-    elif opt.pruning_technique == 1 :
+            ## weights with large final weights are pruned
+            scores = pruned_model.state_dict()
+            scores = {k:-abs(v) for k,v in scores.items()}
 
-        ## weights with large final weights are pruned
-        scores = pruned_model.state_dict()
-        scores = {k:-abs(v) for k,v in scores.items()}
+            prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method = prune.L1Unstructured,
+            importance_scores = scores,
+            amount=percent)
 
-        prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method = prune.L1Unstructured,
-        importance_scores = scores,
-        amount=percent)
-
-    elif opt.pruning_technique == 2 :
-
-
-        ## weights with small initial weights are pruned
-        ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
-        ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
-
-        scores = torch.load(ckpt_path)
-        scores = {k:abs(v) for k,v in scores.items()}
-
-        prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method = prune.L1Unstructured,
-        importance_scores = scores,
-        amount=percent)
-
-    elif opt.pruning_technique == 3 :
+        elif opt.pruning_technique == 2 :
 
 
-        ## weights with large initial weights are pruned
-        ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
-        ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+            ## weights with small initial weights are pruned
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
 
-        scores = torch.load(ckpt_path)
-        scores = {k:-abs(v) for k,v in scores.items()}
+            scores = torch.load(ckpt_path)
+            scores = {k:abs(v) for k,v in scores.items()}
 
-        prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method = prune.L1Unstructured,
-        importance_scores = scores,
-        amount=percent)
+            prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method = prune.L1Unstructured,
+            importance_scores = scores,
+            amount=percent)
 
-    elif opt.pruning_technique == 4 :
+        elif opt.pruning_technique == 3 :
 
-        ## weights with weights moved a lot while training
-        ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
-        ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
 
-        init_weights= torch.load(ckpt_path)
-        trained_weights = pruned_model.state_dict()
+            ## weights with large initial weights are pruned
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
 
-        scores = {k1:abs(v2-v1) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
+            scores = torch.load(ckpt_path)
+            scores = {k:-abs(v) for k,v in scores.items()}
 
-        prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method = prune.L1Unstructured,
-        importance_scores = scores,
-        amount=percent)
+            prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method = prune.L1Unstructured,
+            importance_scores = scores,
+            amount=percent)
+
+        elif opt.pruning_technique == 4 :
+
+            ## weights with weights moved a lot while training
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+
+            init_weights= torch.load(ckpt_path)
+            trained_weights = pruned_model.state_dict()
+
+            scores = {k1:abs(v2-v1) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
+
+            prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method = prune.L1Unstructured,
+            importance_scores = scores,
+            amount=percent)
+        
+        elif opt.pruning_technique == 5 :
+
+            ## weights with weights' magnitude moved a lot while training
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+
+            init_weights= torch.load(ckpt_path)
+            trained_weights = pruned_model.state_dict()
+
+            scores = {k1:abs(abs(v2)-abs(v1)) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
+
+            prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method = prune.L1Unstructured,
+            importance_scores = scores,
+            amount=percent)
+
+        elif opt.pruning_technique == 6 :
+
+            ## weights with weights moved little while training
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+
+            init_weights= torch.load(ckpt_path)
+            trained_weights = pruned_model.state_dict()
+
+            scores = {k1:-abs(v2-v1) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
+
+            prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method = prune.L1Unstructured,
+            importance_scores = scores,
+            amount=percent)
+        
+        elif opt.pruning_technique == 7 :
+
+            ## weights with weights' magnitude moved little while training
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+
+            init_weights= torch.load(ckpt_path)
+            trained_weights = pruned_model.state_dict()
+
+            scores = {k1:-abs(abs(v2)-abs(v1)) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
+
+            prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method = prune.L1Unstructured,
+            importance_scores = scores,
+            amount=percent)
+
+        elif opt.pruning_technique == 8 :
+
+            ## random pruning!
+            scores = pruned_model.state_dict()
+            scores = {k:np.random.random() for k,v in scores.items()}
+
+            prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method = prune.L1Unstructured,
+            importance_scores = scores,
+            amount=percent)
+
+    else:
     
-    elif opt.pruning_technique == 5 :
+        print('pruning LAYER-WISE!')
 
-        ## weights with weights' magnitude moved a lot while training
-        ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
-        ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+        if opt.pruning_technique == 0 :
 
-        init_weights= torch.load(ckpt_path)
-        trained_weights = pruned_model.state_dict()
+            ## weights with small final weights are pruned
+            trained_weight = pruned_model.state_dict()
+            
+            for pruning_weight_num in opt.weights_to_prune:
+                if int(pruning_weight_num) <5 : 
+                    name = 'encoder.fc{}.weight'.format(pruning_weight_num)
+                else:
+                    name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
+                scores = abs(trained_weight[name])
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
 
-        scores = {k1:abs(abs(v2)-abs(v1)) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
+        elif opt.pruning_technique == 1 :
 
-        prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method = prune.L1Unstructured,
-        importance_scores = scores,
-        amount=percent)
+            ## weights with large final weights are pruned
+            trained_weight = pruned_model.state_dict()
+            
+            for pruning_weight_num in opt.weights_to_prune:
+                if int(pruning_weight_num) <5 : 
+                    name = 'encoder.fc{}.weight'.format(pruning_weight_num)
+                else:
+                    name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
+                scores = -abs(trained_weight[name])
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
 
-    elif opt.pruning_technique == 6 :
+        elif opt.pruning_technique == 2 :
 
-        ## weights with weights moved little while training
-        ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
-        ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+            ## weights with small initial weights are pruned
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
 
-        init_weights= torch.load(ckpt_path)
-        trained_weights = pruned_model.state_dict()
+            init_weight = torch.load(ckpt_path)
+            
+            for pruning_weight_num in opt.weights_to_prune:
+                if int(pruning_weight_num) <5 : 
+                    name = 'encoder.fc{}.weight'.format(pruning_weight_num)
+                else:
+                    name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
+                scores = abs(init_weight[name])
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
 
-        scores = {k1:-abs(v2-v1) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
 
-        prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method = prune.L1Unstructured,
-        importance_scores = scores,
-        amount=percent)
-    
-    elif opt.pruning_technique == 7 :
+        elif opt.pruning_technique == 3 :
 
-        ## weights with weights' magnitude moved little while training
-        ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
-        ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
 
-        init_weights= torch.load(ckpt_path)
-        trained_weights = pruned_model.state_dict()
+            ## weights with large initial weights are pruned
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
 
-        scores = {k1:-abs(abs(v2)-abs(v1)) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
+            init_weight = torch.load(ckpt_path)
+            
+            for pruning_weight_num in opt.weights_to_prune:
+                if int(pruning_weight_num) <5 : 
+                    name = 'encoder.fc{}.weight'.format(pruning_weight_num)
+                else:
+                    name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
+                scores = -abs(init_weight[name])
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
 
-        prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method = prune.L1Unstructured,
-        importance_scores = scores,
-        amount=percent)
+        elif opt.pruning_technique == 4 :
 
-    elif opt.pruning_technique == 8 :
+            ## weights with weights moved a lot while training
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
 
-        ## random pruning!
-        scores = pruned_model.state_dict()
-        scores = {k:np.random.random() for k,v in scores.items()}
+            init_weights= torch.load(ckpt_path)
+            trained_weights = pruned_model.state_dict()
 
-        prune.global_unstructured(
-        parameters_to_prune,
-        pruning_method = prune.L1Unstructured,
-        importance_scores = scores,
-        amount=percent)
+            for pruning_weight_num in opt.weights_to_prune:
+                if int(pruning_weight_num) <5 : 
+                    name = 'encoder.fc{}.weight'.format(pruning_weight_num)
+                else:
+                    name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
+                scores = abs(trained_weights[name]-init_weights[name])
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
+        
+        elif opt.pruning_technique == 5 :
 
+            ## weights with weights' magnitude moved a lot while training
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+
+            init_weights= torch.load(ckpt_path)
+            trained_weights = pruned_model.state_dict()
+
+            for pruning_weight_num in opt.weights_to_prune:
+                if int(pruning_weight_num) <5 : 
+                    name = 'encoder.fc{}.weight'.format(pruning_weight_num)
+                else:
+                    name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
+                scores = abs(abs(trained_weights[name])-abs(init_weights[name]))
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
+
+        elif opt.pruning_technique == 6 :
+
+            ## weights with weights moved little while training
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+
+            init_weights= torch.load(ckpt_path)
+            trained_weights = pruned_model.state_dict()
+
+            for pruning_weight_num in opt.weights_to_prune:
+                if int(pruning_weight_num) <5 : 
+                    name = 'encoder.fc{}.weight'.format(pruning_weight_num)
+                else:
+                    name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
+                scores = -abs(trained_weights[name]-init_weights[name])
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
+        
+        elif opt.pruning_technique == 7 :
+
+            ## weights with weights' magnitude moved little while training
+            ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'0', opt.pretrained_run)
+            ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+
+            init_weights= torch.load(ckpt_path)
+            trained_weights = pruned_model.state_dict()
+
+            for pruning_weight_num in opt.weights_to_prune:
+                if int(pruning_weight_num) <5 : 
+                    name = 'encoder.fc{}.weight'.format(pruning_weight_num)
+                else:
+                    name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
+                scores = -abs(abs(trained_weights[name])-abs(init_weights[name]))
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
+
+        elif opt.pruning_technique == 8 :
+            
+            trained_weights = pruned_model.state_dict()
+
+            ## random pruning!
+            for pruning_weight_num in opt.weights_to_prune:
+                if int(pruning_weight_num) <5 : 
+                    name = 'encoder.fc{}.weight'.format(pruning_weight_num)
+                else:
+                    name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
+                scores = torch.rand_like(trained_weights[name])
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
 
     # elif args.mask == 'snip':
         
@@ -596,9 +743,13 @@ for i, percent in enumerate(tqdm(xaxis_range)):
         
     global_sparsity = show_global_sparsity(pruned_model)
     writer.add_scalar('global_sparsity'.format(opt.leave), global_sparsity, i)
-    
+    writer.add_scalar('percentage', percent, i)
+
+
     for this_layer in range(8):
         layer_sparsity = show_layer_sparsity(pruned_model, this_layer)
+        if layer_sparsity == 100:
+            raise('layer_sparsity_reached_100%')
         writer.add_scalar('layer_sparsity/layer_{}'.format(this_layer+1), layer_sparsity, i)
 
     model_paths = os.path.join('trained_models','pruning_technique_{}'.format(opt.pruning_technique),'leave_out_{}'.format(opt.leave), opt.pruning_run)

@@ -149,7 +149,6 @@ test/
 trained_models/
 
 pruning_results/
-tensorboard/
-trained_models/
-
-*.pth
+# tensorboard/
+trained_models/pretrained/
+trained_models/pruning_technique_0/
