@@ -20,7 +20,7 @@ download_root = './dataset'
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--gpu",type=int, default=0, help="cuda index")
-parser.add_argument("--max_epoch",type=int, default=300, help="training_epoch")
+parser.add_argument("--max_epoch",type=int, default=100, help="training_epoch")
 parser.add_argument("--save_dir",default='trained_models', help="saving_directions_for_trained_weights")
 parser.add_argument("--lr",default=0.001, help="learning_rate")
 parser.add_argument("--input_dim",type=int,default=784, help="input_dimensions")
@@ -70,16 +70,26 @@ train_loader = torch.utils.data.DataLoader(dataset=train_dataset,
 #                          batch_size=opt.batch_size,
 #                          shuffle=True)
 
-device = torch.device('cuda')
-torch.cuda.set_device(opt.gpu)
+# device = torch.device('cuda')
+# torch.cuda.set_device(opt.gpu)
 
 model_name = "_".join(opt.dimensions.split(','))
-model.to(device)
+model = model.cuda()
 print(model)
+
+
 
 model.train()
 global_step=0
 for epoch in range(1, opt.max_epoch+ 1):
+
+    if epoch == 1 :
+        model_state = model.state_dict()
+        #print(model_state)
+        ckpt_name = '{}_sigmoid_{}_epoch_0_run_{}'.format(model_name,opt.sigmoid, opt.run)
+        ckpt_path = os.path.join(opt.save_dir,'pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
+        torch.save(model_state, ckpt_path)
+
     avg_loss = 0
     step = 0
     for i, (data,label) in enumerate(train_loader):
@@ -101,7 +111,7 @@ for epoch in range(1, opt.max_epoch+ 1):
     # scheduler.step()
 
 
-    if epoch % 100 == 0:
+    if epoch % 50 == 0 :
         model_state = model.state_dict()
         #print(model_state)
         ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,epoch, opt.run)

@@ -669,6 +669,36 @@ def show_global_sparsity(model, verbose=True):
             
     return sparsity
 
+
+def show_layer_sparsity(model, layer, verbose=True):
+    if layer==0:
+        this_layer = model.encoder.fc1.weight
+    elif layer==1:
+        this_layer = model.encoder.fc2.weight
+    elif layer==2:
+        this_layer = model.encoder.fc3.weight
+    elif layer==3:
+        this_layer = model.encoder.fc4.weight
+
+    elif layer==4:
+        this_layer = model.decoder.fc4.weight
+    elif layer==5:
+        this_layer = model.decoder.fc3.weight
+    elif layer==6:
+        this_layer = model.decoder.fc2.weight
+    elif layer==7:
+        this_layer = model.decoder.fc1.weight
+
+    sparsity = 100. * float(
+            torch.sum(this_layer == 0)
+        )/ (torch.sum(this_layer == 0) + torch.sum(this_layer != 0))
+    
+    if verbose:
+        print(
+        "Sparsity of layer {} : {:.10f}%".format(layer, sparsity) )
+            
+    return sparsity
+
 def calculate_auroc(ind_recon, ood_recon):          
     ind_size=ind_recon.cpu().numpy().shape[0]
     ood_size=ood_recon.cpu().numpy().shape[0]

@@ -150,5 +150,6 @@ trained_models/
 
 pruning_results/
 tensorboard/
-# trained_models/
+trained_models/
 
+*.pth
