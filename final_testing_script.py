@@ -356,10 +356,10 @@ for remaining_sparsity in remaining_sparsity_list:
         auroc = calculate_auroc(ind_recon, ood_recon)
 
         logger.info("Pruned model (after finetuning) has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
-        notify.send("({:.2f}%)/L{}/T{}/AUC {:.4f}/Loss {:.4f} for Experiment {}, sparse {}, connection {}, ".format(count/36, opt.leave, opt.pruning_technique, auroc, torch.mean(ind_recon),opt.name, remaining_sparsity, remaining_connection))
+        notify.send("({:.2f}%)/L{}/T{}/AUC {:.4f}/Loss {:.4f} for Experiment {}, sparse {}, connection {}, ".format(100*count/36, opt.leave, opt.pruning_technique, auroc, torch.mean(ind_recon),opt.name, remaining_sparsity, remaining_connection))
 
         img_grid = check_reconstructed_images(pruned_model, None, 0, 0, "after_FT", ind_loader, ood_loader, None, model_name, opt.sigmoid, None, False)
         plt.imsave("./logs/{}/images/after_FT_sparse_{}_connection_{}.jpg".format(opt.name, remaining_sparsity, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
 
 
-notify.send("Experiment {} Done!".format(opt.name))
+notify.send("HOORAY!!! TRAINING DONEEEE!!!!")
