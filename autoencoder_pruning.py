@@ -32,6 +32,7 @@ parser.add_argument("--lr",type=float, default =0.001)
 parser.add_argument("--batch_size",type=int, default =256)
 parser.add_argument("--weights_to_prune",'-wtp', nargs="+", default=["1", "2","3","4","5", "6","7","8"])
 parser.add_argument("--sigmoid", action='store_true')
+parser.add_argument("--no-bias", action='store_true')
 parser.add_argument("--layerwise-pruning", action='store_true')
 
 
@@ -111,6 +112,8 @@ xaxis_range = np.concatenate((range_1, range_2, range_3),0)
 
 # model = 
 
+layer_sparsity_count =0 
+
 for i, percent in enumerate(tqdm(xaxis_range)):
     
     print(percent)
@@ -157,7 +160,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
 
             ## weights with large final weights are pruned
             scores = pruned_model.state_dict()
-            scores = {k:-abs(v) for k,v in scores.items()}
+            scores = {k:1/abs(v) for k,v in scores.items()}
 
             prune.global_unstructured(
             parameters_to_prune,
@@ -189,7 +192,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
             ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
 
             scores = torch.load(ckpt_path)
-            scores = {k:-abs(v) for k,v in scores.items()}
+            scores = {k:1/abs(v) for k,v in scores.items()}
 
             prune.global_unstructured(
             parameters_to_prune,
@@ -240,7 +243,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
             init_weights= torch.load(ckpt_path)
             trained_weights = pruned_model.state_dict()
 
-            scores = {k1:-abs(v2-v1) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
+            scores = {k1:1/abs(v2-v1) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
 
             prune.global_unstructured(
             parameters_to_prune,
@@ -257,7 +260,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
             init_weights= torch.load(ckpt_path)
             trained_weights = pruned_model.state_dict()
 
-            scores = {k1:-abs(abs(v2)-abs(v1)) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
+            scores = {k1:1/abs(abs(v2)-abs(v1)) for ((k1,v1), (k2,v2)) in zip(init_weights.items(),trained_weights.items())}
 
             prune.global_unstructured(
             parameters_to_prune,
@@ -269,7 +272,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
 
             ## random pruning!
             scores = pruned_model.state_dict()
-            scores = {k:np.random.random() for k,v in scores.items()}
+            scores = {k:torch.rand_like(v) for k,v in scores.items()}
 
             prune.global_unstructured(
             parameters_to_prune,
@@ -304,7 +307,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
                     name = 'encoder.fc{}.weight'.format(pruning_weight_num)
                 else:
                     name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
-                scores = -abs(trained_weight[name])
+                scores = 1/abs(trained_weight[name])
                 prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
 
         elif opt.pruning_technique == 2 :
@@ -338,7 +341,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
                     name = 'encoder.fc{}.weight'.format(pruning_weight_num)
                 else:
                     name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
-                scores = -abs(init_weight[name])
+                scores = 1/abs(init_weight[name])
                 prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
 
         elif opt.pruning_technique == 4 :
@@ -389,7 +392,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
                     name = 'encoder.fc{}.weight'.format(pruning_weight_num)
                 else:
                     name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
-                scores = -abs(trained_weights[name]-init_weights[name])
+                scores = 1/abs(trained_weights[name]-init_weights[name])
                 prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
         
         elif opt.pruning_technique == 7 :
@@ -406,7 +409,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
                     name = 'encoder.fc{}.weight'.format(pruning_weight_num)
                 else:
                     name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
-                scores = -abs(abs(trained_weights[name])-abs(init_weights[name]))
+                scores = 1/abs(abs(trained_weights[name])-abs(init_weights[name]))
                 prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
 
         elif opt.pruning_technique == 8 :
@@ -420,314 +423,7 @@ for i, percent in enumerate(tqdm(xaxis_range)):
                 else:
                     name = 'decoder.fc{}.weight'.format(9-int(pruning_weight_num))
                 scores = torch.rand_like(trained_weights[name])
-                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)
-
-    # elif args.mask == 'snip':
-        
-    #     from snip import *
-        
-    #     parameter_shapes_to_prune = []
-        
-    #     for i1 in args.weights_to_prune:
-            
-    #         parameter_shapes_to_prune.append(all_layers[int(i1)-1][0].weight.shape)
-        
-    #     keep_masks = SNIP(pruned_model, 1.0-percent, train_loader, parameter_shapes_to_prune, args.device)
-    #     print((keep_masks[0]==0).sum())
-        
-    #     prune.global_unstructured(
-    #     parameters_to_prune,
-    #     pruning_method = prune.L1Unstructured,
-    #     amount=percent)
-
-    #     print(pruned_model.encoder.fc3.weight_mask)
-    #     print(keep_masks[0])
-
-    #     for indd, i1 in enumerate(args.weights_to_prune):
-            
-    #         prune.custom_from_mask(all_layers[int(i1)-1][0], 'weight', mask=keep_masks[indd])
-    
-    # elif args.mask == 'supermask':
-    #     supermask_model = Supermask_AE(opt.layer_num, opt.h_dim1, opt.h_dim2, opt.h_dim3,opt.h_dim4,args.weights_to_prune, percent,args.sigmoid)
-    #     supermask_model.cuda()   
-
-    #     optimizer = torch.optim.SGD(
-    #         [p for p in supermask_model.parameters() if p.requires_grad],
-    #         lr=args.supermask_lr,
-    #         momentum=0.9,
-    #         weight_decay=0.0005,
-    #     )
-
-        
-    #     plus =0
-    #     for p in supermask_model.parameters():
-    #         if p.requires_grad:
-    #             print(p.shape)
-    #             plus+=1
-                
-    #     print('number of parameters with gradient true : {}'.format(plus))
-        
-    #     scheduler = CosineAnnealingLR(optimizer, T_max=args.supermask_epoch)
-
-    #     supermask_model.train()
-        
-        
-    #     if args.OE_ratio==0:
-    #         total_step=0
-    #         for epoch in trange(1, args.supermask_epoch+ 1):
-    #             avg_loss = 0
-    #             step = 0                
-    #             for (data,label) in train_loader:
-    #                 step += 1
-    #                 total_step +=1
-    #                 data = data.reshape(-1,784).cuda()
-    #                 optimizer.zero_grad()
-    #                 recon_error = supermask_model.recon_error(data)
-    #                 loss = torch.mean(recon_error)
-    #                 loss.backward()
-    #                 optimizer.step()
-    #                 avg_loss += loss
-    #                 writer.add_scalar('supermask/sparsity_{}/loss'.format(percent), avg_loss/step,total_step)
-    #                 sparsity_per_layer = supermask_model.sparsity_per_layer()
-    #                 writer.add_scalar('supermask/sparsity_{}/layer1_sparsity'.format(percent), sparsity_per_layer[0],total_step)
-    #                 writer.add_scalar('supermask/sparsity_{}/layer2_sparsity'.format(percent), sparsity_per_layer[1],total_step)
-    #                 writer.add_scalar('supermask/sparsity_{}/layer3_sparsity'.format(percent), sparsity_per_layer[2],total_step)
-    #                 writer.add_scalar('supermask/sparsity_{}/layer4_sparsity'.format(percent), sparsity_per_layer[3],total_step)
-    #                 writer.add_scalar('supermask/sparsity_{}/layer5_sparsity'.format(percent), sparsity_per_layer[4],total_step)
-    #                 writer.add_scalar('supermask/sparsity_{}/layer6_sparsity'.format(percent), sparsity_per_layer[5],total_step)
-    #                 writer.add_scalar('supermask/sparsity_{}/layer7_sparsity'.format(percent), sparsity_per_layer[6],total_step)
-    #                 writer.add_scalar('supermask/sparsity_{}/layer8_sparsity'.format(percent), sparsity_per_layer[7],total_step)
-                    
-    #     else:
-    #         total_step=0
-    #         for epoch in trange(1, args.supermask_epoch+ 1):
-    #             avg_loss = [0,0,0]
-    #             step = 0                
-    #             for ((data,_),(ood_data,_)) in zip(train_loader, ood_train_loader):
-    #                 step += 1
-    #                 total_step +=1
-    #                 data = data.reshape(-1,784).cuda()
-    #                 ood_data = ood_data.reshape(-1,784).cuda()
-    #                 optimizer.zero_grad()
-    #                 recon_error = supermask_model.recon_error(data)
-    #                 ood_recon_error = supermask_model.recon_error(ood_data)
-    #                 loss = torch.mean(recon_error) - args.OE_ratio * torch.mean(ood_recon_error)
-    #                 loss.backward()
-    #                 optimizer.step()
-    #                 avg_loss[0] += loss
-    #                 avg_loss[1] += torch.mean(recon_error)
-    #                 avg_loss[2] += torch.mean(ood_recon_error)
-                    
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/loss'.format(percent), avg_loss[0]/step,total_step)
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/IND_loss'.format(percent), avg_loss[1]/step,total_step)
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/OOD_loss'.format(percent), avg_loss[2]/step,total_step)
-
-    #                 sparsity_per_layer = supermask_model.sparsity_per_layer()
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/layer1_sparsity'.format(percent), sparsity_per_layer[0],total_step)
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/layer2_sparsity'.format(percent), sparsity_per_layer[1],total_step)
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/layer3_sparsity'.format(percent), sparsity_per_layer[2],total_step)
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/layer4_sparsity'.format(percent), sparsity_per_layer[3],total_step)
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/layer5_sparsity'.format(percent), sparsity_per_layer[4],total_step)
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/layer6_sparsity'.format(percent), sparsity_per_layer[5],total_step)
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/layer7_sparsity'.format(percent), sparsity_per_layer[6],total_step)
-    #                 writer.add_scalar('supermask_OE/sparsity_{}/layer8_sparsity'.format(percent), sparsity_per_layer[7],total_step)        
-    #     init_weights = []
-    #     weight_masks = []
-        
-    #     prune.global_unstructured(
-    #     parameters_to_prune,
-    #     pruning_method = prune.L1Unstructured,
-    #     amount=percent)   
-        
-    #     for layer_from in supermask_model.modules():
-    #         for layer_to in all_layers:
-    #             if isinstance(layer_from, nn.Linear) or isinstance(layer_from, Supermask_Linear):
-    #                 if layer_from.weight.shape==layer_to[0].weight.shape:
-    #                     if isinstance(layer_from, Supermask_Linear):
-    #                         layer_to[0].weight_orig.data = layer_from.weight.data
-    #                         layer_to[0].weight_mask.data = layer_from.mask().data
-    #                         layer_to[0].weight.data = layer_from.weight.data * layer_from.mask().data
-    #                         layer_to[0].bias.data = layer_from.bias.data
-                            
-    #                     else:
-    #                         layer_to[0].weight.data = layer_from.weight.data
-    #                         layer_to[0].bias.data = layer_from.bias.data
-
-    # elif args.mask == 'svs1':
-    #     supermask_model = Supermask_SVS1_AE(opt.layer_num, opt.h_dim1, opt.h_dim2, opt.h_dim3,opt.h_dim4,args.weights_to_prune,args.sigmoid)
-    #     supermask_model.cuda()   
-
-    #     optimizer = torch.optim.SGD(
-    #         [p for p in supermask_model.parameters() if p.requires_grad],
-    #         lr=args.supermask_lr,
-    #         momentum=0.9,
-    #         weight_decay=0.0005,
-    #     )
-
-        
-    #     plus =0
-    #     for p in supermask_model.parameters():
-    #         if p.requires_grad:
-    #             plus+=1
-                
-    #     print('number of parameters with gradient true : {}'.format(plus))
-        
-    #     scheduler = CosineAnnealingLR(optimizer, T_max=args.supermask_epoch)
-        
-    #     supermask_model.train()
-        
-    #     if args.OE_ratio==0:
-    #         total_step=0
-    #         for epoch in trange(1, args.supermask_epoch+ 1):
-    #             avg_loss = 0
-    #             step = 0
-    #             for (data,label) in train_loader:
-    #                 step += 1
-    #                 total_step +=1
-    #                 data = data.reshape(-1,784).cuda()
-    #                 optimizer.zero_grad()
-    #                 recon_error = supermask_model.recon_error(data)
-    #                 loss = torch.mean(recon_error)
-    #                 loss.backward()
-    #                 optimizer.step()
-    #                 avg_loss += loss
-    #                 writer.add_scalar('SVS1/loss', avg_loss/step,total_step)
-    #                 sparsity_per_layer = supermask_model.sparsity_per_layer()
-    #                 writer.add_scalar('SVS1/layer1_sparsity', sparsity_per_layer[0],total_step)
-    #                 writer.add_scalar('SVS1/layer2_sparsity', sparsity_per_layer[1],total_step)
-    #                 writer.add_scalar('SVS1/layer3_sparsity', sparsity_per_layer[2],total_step)
-    #                 writer.add_scalar('SVS1/layer4_sparsity', sparsity_per_layer[3],total_step)
-    #                 writer.add_scalar('SVS1/layer5_sparsity', sparsity_per_layer[4],total_step)
-    #                 writer.add_scalar('SVS1/layer6_sparsity', sparsity_per_layer[5],total_step)
-    #                 writer.add_scalar('SVS1/layer7_sparsity', sparsity_per_layer[6],total_step)
-    #                 writer.add_scalar('SVS1/layer8_sparsity', sparsity_per_layer[7],total_step)
-                    
-    #     else:
-    #         total_step=0
-    #         for epoch in trange(1, args.supermask_epoch+ 1):
-    #             avg_loss = [0,0,0]
-    #             step = 0
-    #             for ((data,_),(ood_data,_)) in zip(train_loader, ood_train_loader):
-    #                 step += 1
-    #                 total_step +=1
-    #                 data = data.reshape(-1,784).cuda()
-    #                 ood_data = ood_data.reshape(-1,784).cuda()
-    #                 optimizer.zero_grad()
-    #                 recon_error = supermask_model.recon_error(data)
-    #                 OOD_recon_error = supermask_model.recon_error(ood_data)
-
-    #                 loss = torch.mean(recon_error) - args.OE_ratio * torch.mean(OOD_recon_error)
-    #                 loss.backward()
-    #                 optimizer.step()
-    #                 avg_loss[0] += loss
-    #                 avg_loss[1] += torch.mean(recon_error)
-    #                 avg_loss[2] += torch.mean(OOD_recon_error)
-    #                 writer.add_scalar('SVS1_OE/loss', avg_loss[0]/step,total_step)
-    #                 writer.add_scalar('SVS1_OE/IND_loss', avg_loss[1]/step,total_step)
-    #                 writer.add_scalar('SVS1_OE/OOD_loss', avg_loss[2]/step,total_step)
-
-    #                 sparsity_per_layer = supermask_model.sparsity_per_layer()
-    #                 writer.add_scalar('SVS1_OE/layer1_sparsity', sparsity_per_layer[0],total_step)
-    #                 writer.add_scalar('SVS1_OE/layer2_sparsity', sparsity_per_layer[1],total_step)
-    #                 writer.add_scalar('SVS1_OE/layer3_sparsity', sparsity_per_layer[2],total_step)
-    #                 writer.add_scalar('SVS1_OE/layer4_sparsity', sparsity_per_layer[3],total_step)
-    #                 writer.add_scalar('SVS1_OE/layer5_sparsity', sparsity_per_layer[4],total_step)
-    #                 writer.add_scalar('SVS1_OE/layer6_sparsity', sparsity_per_layer[5],total_step)
-    #                 writer.add_scalar('SVS1_OE/layer7_sparsity', sparsity_per_layer[6],total_step)
-    #                 writer.add_scalar('SVS1_OE/layer8_sparsity', sparsity_per_layer[7],total_step)        
-    #     init_weights = []
-    #     weight_masks = []
-        
-    #     prune.global_unstructured(
-    #     parameters_to_prune,
-    #     pruning_method = prune.L1Unstructured,
-    #     amount=0.5)   
-        
-    #     for layer_from in supermask_model.modules():
-    #         for layer_to in all_layers:
-    #             if isinstance(layer_from, nn.Linear) or isinstance(layer_from, Supermask_SVS1_Linear):
-    #                 if layer_from.weight.shape==layer_to[0].weight.shape:
-    #                     if isinstance(layer_from, Supermask_SVS1_Linear):
-    #                         layer_to[0].weight_orig.data = layer_from.weight.data
-    #                         layer_to[0].weight_mask.data = layer_from.mask().data
-    #                         layer_to[0].weight.data = layer_from.weight.data * layer_from.mask().data
-    #                         layer_to[0].bias.data = layer_from.bias.data
-                            
-    #                     else:
-    #                         layer_to[0].weight.data = layer_from.weight.data
-    #                         layer_to[0].bias.data = layer_from.bias.data
-
-    # elif args.mask == 'svs2':
-    #     supermask_model = Supermask_SVS2_AE(opt.layer_num, opt.h_dim1, opt.h_dim2, opt.h_dim3,opt.h_dim4,args.weights_to_prune,percent,args.sigmoid)
-    #     supermask_model.cuda()   
-
-    #     optimizer = torch.optim.SGD(
-    #         [p for p in supermask_model.parameters() if p.requires_grad],
-    #         lr=args.supermask_lr,
-    #         momentum=0.9,
-    #         weight_decay=0.0005,
-    #     )
-
-        
-    #     plus =0
-    #     for p in supermask_model.parameters():
-    #         if p.requires_grad:
-    #             plus+=1
-                
-    #     print('number of parameters with gradient true : {}'.format(plus))
-        
-    #     scheduler = CosineAnnealingLR(optimizer, T_max=args.supermask_epoch)
-        
-    #     supermask_model.train()
-        
-    #     if args.OE_ratio==0:
-    #         total_step=0
-    #         for epoch in trange(1, args.supermask_epoch+ 1):
-    #             avg_loss = 0
-    #             step = 0
-    #             for (data,label) in train_loader:
-    #                 step += 1
-    #                 total_step +=1
-    #                 data = data.reshape(-1,784).cuda()
-    #                 optimizer.zero_grad()
-    #                 recon_error = supermask_model.recon_error(data)
-    #                 loss = torch.mean(recon_error)
-    #                 loss.backward()
-    #                 optimizer.step()
-    #                 avg_loss += loss
-    #                 writer.add_scalar('SVS2/knob_{}/loss'.format(percent), avg_loss/step,total_step)
-    #                 sparsity_per_layer = supermask_model.sparsity_per_layer()
-    #                 writer.add_scalar('SVS2/knob_{}/layer1_sparsity'.format(percent), sparsity_per_layer[0],total_step)
-    #                 writer.add_scalar('SVS2/knob_{}/layer2_sparsity'.format(percent), sparsity_per_layer[1],total_step)
-    #                 writer.add_scalar('SVS2/knob_{}/layer3_sparsity'.format(percent), sparsity_per_layer[2],total_step)
-    #                 writer.add_scalar('SVS2/knob_{}/layer4_sparsity'.format(percent), sparsity_per_layer[3],total_step)
-    #                 writer.add_scalar('SVS2/knob_{}/layer5_sparsity'.format(percent), sparsity_per_layer[4],total_step)
-    #                 writer.add_scalar('SVS2/knob_{}/layer6_sparsity'.format(percent), sparsity_per_layer[5],total_step)
-    #                 writer.add_scalar('SVS2/knob_{}/layer7_sparsity'.format(percent), sparsity_per_layer[6],total_step)
-    #                 writer.add_scalar('SVS2/knob_{}/layer8_sparsity'.format(percent), sparsity_per_layer[7],total_step)
-                    
-    #     init_weights = []
-    #     weight_masks = []
-        
-    #     prune.global_unstructured(
-    #     parameters_to_prune,
-    #     pruning_method = prune.L1Unstructured,
-    #     amount=0.5)   
-        
-    #     for layer_from in supermask_model.modules():
-    #         for layer_to in all_layers:
-    #             if isinstance(layer_from, nn.Linear) or isinstance(layer_from, Supermask_SVS2_Linear):
-    #                 if layer_from.weight.shape==layer_to[0].weight.shape:
-    #                     if isinstance(layer_from, Supermask_SVS2_Linear):
-    #                         layer_to[0].weight_orig.data = layer_from.weight.data
-    #                         layer_to[0].weight_mask.data = layer_from.mask().data
-    #                         layer_to[0].weight.data = layer_from.weight.data * layer_from.mask().data
-    #                         layer_to[0].bias.data = layer_from.bias.data
-                            
-    #                     else:
-    #                         layer_to[0].weight.data = layer_from.weight.data
-    #                         layer_to[0].bias.data = layer_from.bias.data        
-                            
+                prune.l1_unstructured(all_layers[int(pruning_weight_num)-1][0], 'weight', percent,scores)                       
                             
     ind_recon = reconstrucion_errors(pruned_model, ind_loader)
     ood_recon = reconstrucion_errors(pruned_model, ood_loader)
@@ -749,8 +445,12 @@ for i, percent in enumerate(tqdm(xaxis_range)):
     for this_layer in range(8):
         layer_sparsity = show_layer_sparsity(pruned_model, this_layer)
         if layer_sparsity == 100:
-            raise('layer_sparsity_reached_100%')
+            layer_sparsity_count+=1
         writer.add_scalar('layer_sparsity/layer_{}'.format(this_layer+1), layer_sparsity, i)
+
+    if layer_sparsity_count >3 : 
+        raise('layer_sparsity_reached_100% 4 times.')
+
 
     model_paths = os.path.join('trained_models','pruning_technique_{}'.format(opt.pruning_technique),'leave_out_{}'.format(opt.leave), opt.pruning_run)
     os.makedirs(model_paths,exist_ok = True)

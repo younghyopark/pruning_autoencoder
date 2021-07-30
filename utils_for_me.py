@@ -707,7 +707,7 @@ def calculate_auroc(ind_recon, ood_recon):
             
     return auroc
 
-def check_reconstructed_images(model, writer, index, percent, string, ind_loader, ood_loader,result_dir, model_name, sigmoid, run):
+def check_reconstructed_images(model, writer, index, percent, string, ind_loader, ood_loader,result_dir, model_name, sigmoid, run, save = True):
     test_data = torch.stack([ind_loader.dataset[i][0] for i in range(10)])
     recon = model(test_data.reshape(-1,784).cuda()).detach().cpu()
     recon = torch.clamp(recon.view(len(recon), 1, 28, 28), 0, 1)
@@ -719,11 +719,16 @@ def check_reconstructed_images(model, writer, index, percent, string, ind_loader
 
     x_and_recon = torch.cat([test_data, recon, test_data2,recon2])
     img_grid = make_grid(x_and_recon.detach().cpu(), nrow=10, range=(0, 1))
-    writer.add_image('reconstructed_images_{}'.format(string), img_grid, index)
+    if writer is not None:
+        writer.add_image('reconstructed_images_{}'.format(string), img_grid, index)
+    # if save:
     plt.figure()
     plt.imshow(img_grid.cpu().numpy().transpose(1,2,0))
-    plt.savefig(os.path.join(result_dir,'{}_{}_sigmoid_{}_sparsity_{:.3f}_run_{}_reconstructed.png'.format(string, model_name, sigmoid, percent, run)))
+    if save:
+        plt.savefig(os.path.join(result_dir,'{}_{}_sigmoid_{}_sparsity_{:.3f}_run_{}_reconstructed.png'.format(string, model_name, sigmoid, percent, run)))
     plt.close()
+
+    return img_grid
 
 def check_representations(model,loader):
     representations = []
