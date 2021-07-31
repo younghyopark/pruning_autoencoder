@@ -136,6 +136,8 @@ logger.setLevel(logging.INFO)
 stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
+os.makedirs('./new_logs/{}/'.format(opt.name),exist_ok = True)
+
 file_handler = logging.FileHandler('./new_logs/{}/logfile.log'.format(opt.name))
 logger.addHandler(file_handler)
 
