@@ -54,7 +54,7 @@ opt = parser.parse_args()
 print(opt)
 
 if opt.name is None:
-    opt.name = 'leave_{}_tech_{}_{}'.format(opt.leave, opt.pruning_technique, opt.layer.replace('.','_'))
+    opt.name = 'leave_{}_{}'.format(opt.leave, opt.layer.replace('.','_'))
 print(opt.name)
 
 # notify = Notify()
@@ -70,16 +70,6 @@ print(opt.name)
 #     epoch = 10
 #     weights_to_prune = ['1','2','3','4','5','6','7','8']
 #     bias = True
-
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
-stream_handler = logging.StreamHandler()
-logger.addHandler(stream_handler)
-
-os.makedirs('./logs/{}/images'.format(opt.name),exist_ok = True)
-
-file_handler = logging.FileHandler('./logs/{}/logfile.log'.format(opt.name))
-logger.addHandler(file_handler)
 
 mnist_transform = torchvision.transforms.Compose([
     torchvision.transforms.ToTensor(), 
@@ -126,12 +116,7 @@ if len(dimensions)!=6:
 
 model_name = "_".join(opt.dimensions.split(','))
 
-remaining_sparsity_list = [0]
 
-if os.path.exists(os.path.join('logs',opt.name, 'logfile.log')):
-    x = open(os.path.join('logs',opt.name, 'logfile.log')).readlines()
-else:
-    x = None
 
 parameter_nums = {
     'encoder.fc1':784*512,  #784*512,
@@ -145,13 +130,30 @@ parameter_nums = {
 }
 
 count =0
-for remaining_sparsity in remaining_sparsity_list:
-    for remaining_connection in range(1,13):
+for tech in range(9):
+    opt.pruning_technique = tech
+
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    stream_handler = logging.StreamHandler()
+    logger.addHandler(stream_handler)
+
+    os.makedirs('./new_logs/{}/saliency_measure_{}/images'.format(opt.name, tech),exist_ok = True)
+
+    file_handler = logging.FileHandler('./new_logs/{}/saliency_measure_{}/logfile.log'.format(opt.name, tech))
+    logger.addHandler(file_handler)
+
+    if os.path.exists(os.path.join('new_logs',opt.name, 'logfile.log')):
+        x = open(os.path.join('new_logs',opt.name, 'logfile.log'),"r").readlines()
+    else:
+        x = None
+
+    for remaining_connection in range(1,17):
         count+=1
-        if x is None or "Starting the process with remaining sparsity {} and connection {}!\n".format(remaining_sparsity, remaining_connection) not in x:
+        if x is None or "Starting the process with remaining connection {}!\n".format(remaining_connection) not in x:
             logger.info(" ")
             logger.info("Currently running {} experiment. ".format(opt.name))
-            logger.info("Starting the process with remaining sparsity {} and connection {}!".format(remaining_sparsity, remaining_connection))
+            logger.info("Starting the process with remaining connection {}!".format(remaining_connection))
 
             sparsity_levels={
                 'encoder.fc1.weight':0,  #784*512,
@@ -191,7 +193,7 @@ for remaining_sparsity in remaining_sparsity_list:
 
             img_grid = check_reconstructed_images(pruned_model, None, 0, 0, "after_FT", ind_loader, ood_loader, None, model_name, opt.sigmoid, None, False)
             # plt.imshow(img_grid.cpu().numpy().transpose(1,2,0))
-            plt.imsave("./logs/{}/images/original_sparse_{}_connection_{}.jpg".format(opt.name, remaining_sparsity, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
+            plt.imsave("./new_logs/{}/saliency_measure_{}/images/original_connection_{}.jpg".format(opt.name, tech, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
 
 
             all_layers = [(pruned_model.encoder.fc1,'weight'),(pruned_model.encoder.fc2,'weight'),(pruned_model.encoder.fc3,'weight'),(pruned_model.encoder.fc4,'weight'),(pruned_model.decoder.fc4,'weight'),(pruned_model.decoder.fc3,'weight'),(pruned_model.decoder.fc2,'weight'),(pruned_model.decoder.fc1,'weight')] 
@@ -360,7 +362,7 @@ for remaining_sparsity in remaining_sparsity_list:
 
 
             img_grid = check_reconstructed_images(pruned_model, None, 0, 0, "after_FT", ind_loader, ood_loader, None, model_name, opt.sigmoid, None, False)
-            plt.imsave("./logs/{}/images/before_FT_sparse_{}_connection_{}.jpg".format(opt.name, remaining_sparsity, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
+            plt.imsave("./new_logs/{}/saliency_measure_{}/images/before_FT_connection_{}.jpg".format(opt.name, tech, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
 
             for this_layer in range(8):
                 layer_sparsity = show_layer_sparsity(pruned_model, this_layer, verbose=False)
@@ -403,7 +405,7 @@ for remaining_sparsity in remaining_sparsity_list:
                 bot.sendMessage(chat_id = CHAT_ID, text=sending_text)
             
             img_grid = check_reconstructed_images(pruned_model, None, 0, 0, "after_FT", ind_loader, ood_loader, None, model_name, opt.sigmoid, None, False)
-            plt.imsave("./logs/{}/images/after_FT_sparse_{}_connection_{}.jpg".format(opt.name, remaining_sparsity, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
+            plt.imsave("./new_logs/{}/saliency_measure_{}/images/after_FT_connection_{}.jpg".format(opt.name,tech, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
         else:
             print("Already have the result for this experiment")
 
