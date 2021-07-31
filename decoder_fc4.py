@@ -121,10 +121,10 @@ for remaining_sparsity in remaining_sparsity_list:
         sparsity_levels={
             'encoder.fc1.weight':0,  #784*512,
             'encoder.fc2.weight':remaining_sparsity, #512*256,
-            'encoder.fc3.weight':0,#256*64
-            'encoder.fc4.weight':64*16 -remaining_connection , # 64*16
-            'decoder.fc4.weight':0, #16*64 ,
-            'decoder.fc3.weight':remaining_sparsity,#64*256
+            'encoder.fc3.weight':remaining_sparsity,#256*64
+            'encoder.fc4.weight':0 , # 64*16
+            'decoder.fc4.weight':64*16 -remaining_connection, #16*64 ,
+            'decoder.fc3.weight':0,#64*256
             'decoder.fc2.weight':remaining_sparsity,#256*512
             'decoder.fc1.weight':0,
         }
