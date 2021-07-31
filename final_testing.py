@@ -15,7 +15,20 @@ from utils_for_me import *
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from model import Fully_Connected_AE
 import logging
-from notify_run import Notify
+# from notify_run import Notify
+import telegram
+
+
+my_token = '1923368350:AAFkUmZwb6OCljMTai031vY0A4zmi3tVDJQ'
+
+bot = telegram.Bot(token = my_token)   #bot을 선언합니다.
+
+# updates = bot.getUpdates()  #업데이트 내역을 받아옵니다.
+
+# for u in updates :   # 내역중 메세지를 출력합니다.
+
+
+CHAT_ID: int = 1938870254
 
 
 parser = argparse.ArgumentParser()
@@ -32,14 +45,19 @@ parser.add_argument("--weights_to_prune",'-wtp', nargs="+", default=["1", "2","3
 parser.add_argument("--sigmoid", action='store_true')
 parser.add_argument("--bias", default = True)
 parser.add_argument("--layerwise-pruning", action='store_true')
-parser.add_argument("--name", type=str, required=True)
+parser.add_argument("--name", type=str, default = None)
+parser.add_argument("--layer", type=str, required=True)
 
 
 
 opt = parser.parse_args()
 print(opt)
 
-notify = Notify()
+if opt.name is None:
+    opt.name = 'leave_{}_tech_{}_{}'.format(opt.leave, opt.pruning_technique, opt.layer.replace('.','_'))
+print(opt.name)
+
+# notify = Notify()
 
 # class opt:
 #     leave =1
@@ -115,26 +133,38 @@ if os.path.exists(os.path.join('logs',opt.name, 'logfile.log')):
 else:
     x = None
 
+parameter_nums = {
+    'encoder.fc1':784*512,  #784*512,
+    'encoder.fc2':512*256, #512*256,
+    'encoder.fc3':256*64,#256*64
+    'encoder.fc4':64*16, # 64*16
+    'decoder.fc4':16*64, #16*64 ,
+    'decoder.fc3':64*256,#64*256
+    'decoder.fc2':256*512,#256*512
+    'decoder.fc1':512*784,
+}
+
 count =0
 for remaining_sparsity in remaining_sparsity_list:
     for remaining_connection in range(1,13):
         count+=1
         if x is None or "Starting the process with remaining sparsity {} and connection {}!\n".format(remaining_sparsity, remaining_connection) not in x:
-
             logger.info(" ")
             logger.info("Currently running {} experiment. ".format(opt.name))
             logger.info("Starting the process with remaining sparsity {} and connection {}!".format(remaining_sparsity, remaining_connection))
 
             sparsity_levels={
                 'encoder.fc1.weight':0,  #784*512,
-                'encoder.fc2.weight':remaining_sparsity, #512*256,
-                'encoder.fc3.weight':remaining_sparsity,#256*64
-                'encoder.fc4.weight':remaining_sparsity , # 64*16
+                'encoder.fc2.weight':0, #512*256,
+                'encoder.fc3.weight':0,#256*64
+                'encoder.fc4.weight':0 , # 64*16
                 'decoder.fc4.weight':0, #16*64 ,
-                'decoder.fc3.weight':64*256 - remaining_connection,#64*256
+                'decoder.fc3.weight':0,#64*256
                 'decoder.fc2.weight':0,#256*512
                 'decoder.fc1.weight':0,
             }
+
+            sparsity_levels[opt.layer+'.weight'] = parameter_nums[opt.layer] - remaining_connection
 
             pruned_model = Fully_Connected_AE(opt.input_dim, dimensions,opt.sigmoid, opt.bias)
 
@@ -154,6 +184,8 @@ for remaining_sparsity in remaining_sparsity_list:
             # print('auroc = {}'.format(auroc))
             # print('ind_recon_mean = {}'.format(torch.mean(ind_recon)))
             # print('ood_recon_mean = {}'.format(torch.mean(ood_recon)))
+            orig_auroc = auroc
+            orig_ind_recon = ind_recon
 
             logger.info("Pretrained model has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
 
@@ -363,11 +395,16 @@ for remaining_sparsity in remaining_sparsity_list:
             auroc = calculate_auroc(ind_recon, ood_recon)
 
             logger.info("Pruned model (after finetuning) has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
-            notify.send("({:.2f}%) L{}/T{}/AUC {:.4f}/Loss {:.4f} for Experiment {}, sparse {}, connection {}, ".format(100*count/12, opt.leave, opt.pruning_technique, auroc, torch.mean(ind_recon),opt.name, remaining_sparsity, remaining_connection))
+            # notify.send("({:.2f}%) L{}/T{}/AUC {:.4f}/Loss {:.4f} for Experiment {}, sparse {}, connection {}, ".format(100*count/12, opt.leave, opt.pruning_technique, auroc, torch.mean(ind_recon),opt.name, remaining_sparsity, remaining_connection))
             logger.info("Notification sent to chrome.")
 
+            sending_text = "Original AUC {:.4f} --> Pruned AUC {:.4f}\nOriginal IND {:.4f} --> Pruned IND {:.4f}\n\n***Details***\n - Leave out {}\n - Remaining Connections {} \n - Layer {} \n - Saliency Measure {}".format(orig_auroc, auroc, torch.mean(orig_ind_recon), torch.mean(ind_recon), opt.leave, remaining_connection, opt.layer, opt.pruning_technique)
+            if auroc > orig_auroc:
+                bot.sendMessage(chat_id = CHAT_ID, text=sending_text)
+            
             img_grid = check_reconstructed_images(pruned_model, None, 0, 0, "after_FT", ind_loader, ood_loader, None, model_name, opt.sigmoid, None, False)
             plt.imsave("./logs/{}/images/after_FT_sparse_{}_connection_{}.jpg".format(opt.name, remaining_sparsity, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
+        else:
+            print("Already have the result for this experiment")
 
-
-notify.send("HOORAY!!! TRAINING DONEEEE!!!!")
+bot.sendMessage(chat_id = CHAT_ID, text="HOORAY! TRAINING DONE FOR {}!".format(opt.name))

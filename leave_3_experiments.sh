@@ -1,9 +1,0 @@
-python final_testing_script.py --leave 3 -tech 0 --name leave_3_tech_0_encoder_fc4;
-python final_testing_script.py --leave 3 -tech 1 --name leave_3_tech_1_encoder_fc4;
-python final_testing_script.py --leave 3 -tech 2 --name leave_3_tech_2_encoder_fc4;
-python final_testing_script.py --leave 3 -tech 3 --name leave_3_tech_3_encoder_fc4;
-python final_testing_script.py --leave 3 -tech 4 --name leave_3_tech_4_encoder_fc4;
-python final_testing_script.py --leave 3 -tech 5 --name leave_3_tech_5_encoder_fc4;
-python final_testing_script.py --leave 3 -tech 6 --name leave_3_tech_6_encoder_fc4;
-python final_testing_script.py --leave 3 -tech 7 --name leave_3_tech_7_encoder_fc4;
-python final_testing_script.py --leave 3 -tech 8 --name leave_3_tech_8_encoder_fc4;
