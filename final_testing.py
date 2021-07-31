@@ -130,18 +130,19 @@ parameter_nums = {
 }
 
 count =0
+logger = dict()
 for tech in range(9):
     opt.pruning_technique = tech
 
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
+    logger[tech] = logging.getLogger()
+    logger[tech].setLevel(logging.INFO)
     stream_handler = logging.StreamHandler()
-    logger.addHandler(stream_handler)
+    logger[tech].addHandler(stream_handler)
 
     os.makedirs('./new_logs/{}/saliency_measure_{}/images'.format(opt.name, tech),exist_ok = True)
 
     file_handler = logging.FileHandler('./new_logs/{}/saliency_measure_{}/logfile.log'.format(opt.name, tech))
-    logger.addHandler(file_handler)
+    logger[tech].addHandler(file_handler)
 
     if os.path.exists(os.path.join('new_logs',opt.name, 'logfile.log')):
         x = open(os.path.join('new_logs',opt.name, 'logfile.log'),"r").readlines()
@@ -151,9 +152,9 @@ for tech in range(9):
     for remaining_connection in range(1,17):
         count+=1
         if x is None or "Starting the process with remaining connection {}!\n".format(remaining_connection) not in x:
-            logger.info(" ")
-            logger.info("Currently running {} experiment. ".format(opt.name))
-            logger.info("Starting the process with remaining connection {}!".format(remaining_connection))
+            logger[tech].info(" ")
+            logger[tech].info("Currently running {} experiment. ".format(opt.name))
+            logger[tech].info("Starting the process with remaining connection {}!".format(remaining_connection))
 
             sparsity_levels={
                 'encoder.fc1.weight':0,  #784*512,
@@ -175,7 +176,7 @@ for tech in range(9):
             print(ckpt_path)
             pruned_model.load_state_dict(torch.load(ckpt_path, map_location='cpu'))
 
-            logger.info("Loaded pretrained model")
+            logger[tech].info("Loaded pretrained model")
 
             pruned_model = pruned_model.cuda()
 
@@ -189,7 +190,7 @@ for tech in range(9):
             orig_auroc = auroc
             orig_ind_recon = ind_recon
 
-            logger.info("Pretrained model has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
+            logger[tech].info("Pretrained model has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
 
             img_grid = check_reconstructed_images(pruned_model, None, 0, 0, "after_FT", ind_loader, ood_loader, None, model_name, opt.sigmoid, None, False)
             # plt.imshow(img_grid.cpu().numpy().transpose(1,2,0))
@@ -354,7 +355,7 @@ for tech in range(9):
                     
             auroc = calculate_auroc(ind_recon, ood_recon)
 
-            logger.info("Pruned model (before finetuning) has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
+            logger[tech].info("Pruned model (before finetuning) has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
 
             # print('auroc = {}'.format(auroc))
             # print('ind_recon_mean = {}'.format(torch.mean(ind_recon)))
@@ -396,9 +397,9 @@ for tech in range(9):
                     
             auroc = calculate_auroc(ind_recon, ood_recon)
 
-            logger.info("Pruned model (after finetuning) has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
+            logger[tech].info("Pruned model (after finetuning) has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
             # notify.send("({:.2f}%) L{}/T{}/AUC {:.4f}/Loss {:.4f} for Experiment {}, sparse {}, connection {}, ".format(100*count/12, opt.leave, opt.pruning_technique, auroc, torch.mean(ind_recon),opt.name, remaining_sparsity, remaining_connection))
-            logger.info("Notification sent to chrome.")
+            logger[tech].info("Notification sent to chrome.")
 
             sending_text = "Original AUC {:.4f} --> Pruned AUC {:.4f}\nOriginal IND {:.4f} --> Pruned IND {:.4f}\n\n***Details***\n - Leave out {}\n - Remaining Connections {} \n - Layer {} \n - Saliency Measure {}".format(orig_auroc, auroc, torch.mean(orig_ind_recon), torch.mean(ind_recon), opt.leave, remaining_connection, opt.layer, opt.pruning_technique)
             if auroc > orig_auroc:
