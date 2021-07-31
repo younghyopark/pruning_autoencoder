@@ -108,11 +108,11 @@ if len(dimensions)!=6:
 
 model_name = "_".join(opt.dimensions.split(','))
 
-remaining_sparsity_list = [0,0.1,0.3,0.5,0.7,0.9]
+remaining_sparsity_list = [0]
 
 count =0
 for remaining_sparsity in remaining_sparsity_list:
-    for remaining_connection in range(1,7):
+    for remaining_connection in range(1,13):
         count+=1
         logger.info(" ")
         logger.info("Currently running {} experiment. ".format(opt.name))
@@ -356,7 +356,7 @@ for remaining_sparsity in remaining_sparsity_list:
         auroc = calculate_auroc(ind_recon, ood_recon)
 
         logger.info("Pruned model (after finetuning) has AUROC / IND / OOD = {} / {} / {}".format(auroc, torch.mean(ind_recon), torch.mean(ood_recon)))
-        notify.send("({:.2f}%) L{}/T{}/AUC {:.4f}/Loss {:.4f} for Experiment {}, sparse {}, connection {}, ".format(100*count/36, opt.leave, opt.pruning_technique, auroc, torch.mean(ind_recon),opt.name, remaining_sparsity, remaining_connection))
+        notify.send("({:.2f}%) L{}/T{}/AUC {:.4f}/Loss {:.4f} for Experiment {}, sparse {}, connection {}, ".format(100*count/12, opt.leave, opt.pruning_technique, auroc, torch.mean(ind_recon),opt.name, remaining_sparsity, remaining_connection))
         logger.info("Notification sent to chrome.")
 
         img_grid = check_reconstructed_images(pruned_model, None, 0, 0, "after_FT", ind_loader, ood_loader, None, model_name, opt.sigmoid, None, False)
