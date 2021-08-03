@@ -150,7 +150,7 @@ test/
 
 pruning_results/
 # tensorboard/
-# trained_models/pretrained/
+trained_models/pretrained/
 # trained_models/pruning_technique_0/
 
 *.jpg
