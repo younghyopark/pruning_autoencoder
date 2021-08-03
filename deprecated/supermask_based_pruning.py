@@ -306,7 +306,6 @@ class SupermaskLinear(nn.Linear):
 
         # NOTE: turn the gradient on the weights off
         self.weight.requires_grad = False
-        self
 
     def forward(self, x):
         subnet = GetSubnet.apply(self.scores.abs(), self.sparsity)
@@ -458,7 +457,7 @@ def main():
     decoder = Supermask_DeConvNet2(z_dim, 1, nh=8, out_activation='sigmoid')
 
     model = NAE(encoder, decoder, l2_norm_reg=l2_norm_reg, l2_norm_reg_en=l2_norm_reg_en, spherical=spherical, z_step=10, z_stepsize=0.2, z_noise_std=0.05, x_step=50, x_stepsize=0.2, x_noise_std=0.05, x_noise_anneal=1., x_bound=(0, 1), z_bound=None, x_clip_langevin_grad=None)
-    model.cuda(device);
+    model.cuda(device)
 
     # NOTE: only pass the parameters where p.requires_grad == True to the optimizer! Important!
     optimizer = optim.SGD(

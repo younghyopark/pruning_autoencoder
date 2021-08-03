@@ -30,6 +30,7 @@ parser.add_argument("--leave",type=int)
 parser.add_argument("--sigmoid", action='store_true')
 parser.add_argument("--no-bias", action='store_true')
 parser.add_argument("--run",type=str,default = None)
+parser.add_argument("--alternative",action='store_true')
 
 
 opt = parser.parse_args()
@@ -43,7 +44,7 @@ dimensions = list(map(int,opt.dimensions.split(',')))
 if len(dimensions)!=6:
     raise('give me 6 dimensions for autoencoder network!')
 
-model = Fully_Connected_AE(opt.input_dim, dimensions,opt.sigmoid, not opt.no_bias)
+model = Fully_Connected_AE(opt.input_dim, dimensions,opt.sigmoid, not opt.no_bias, opt.alternative)
 optimizer = torch.optim.Adam(model.parameters(), opt.lr)
 # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=opt.max_epoch, eta_min=0, last_epoch=-1)
 

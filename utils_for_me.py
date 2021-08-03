@@ -688,6 +688,9 @@ def show_layer_sparsity(model, layer, verbose=True):
         this_layer = model.decoder.fc2.weight
     elif layer==7:
         this_layer = model.decoder.fc1.weight
+    elif layer==8:
+        this_layer = model.bottleneck.bottleneck.weight
+
 
     sparsity = 100. * float(
             torch.sum(this_layer == 0)
