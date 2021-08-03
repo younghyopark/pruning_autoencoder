@@ -146,11 +146,11 @@ finetune_30/
 MNIST_DATASET/
 SVS_experiments/
 test/
-trained_models/
+# trained_models/
 
 pruning_results/
 # tensorboard/
-trained_models/pretrained/
-trained_models/pruning_technique_0/
+# trained_models/pretrained/
+# trained_models/pruning_technique_0/
 
 *.jpg
