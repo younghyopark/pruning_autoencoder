@@ -143,7 +143,7 @@ train_dataset.data = train_dataset.data[idx]
 
 train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
                          batch_size=opt.batch_size,
-                         shuffle=True)
+                         shuffle=True,num_workers=4)
 
 idx = ind_dataset.targets!=opt.leave
 ind_dataset.targets = ind_dataset.targets[idx]
@@ -151,7 +151,7 @@ ind_dataset.data = ind_dataset.data[idx]
 
 ind_loader = torch.utils.data.DataLoader(dataset=ind_dataset, 
                          batch_size=opt.batch_size,
-                         shuffle=False)
+                         shuffle=False,num_workers=4)
 
 mnist_transform = torchvision.transforms.Compose([
     torchvision.transforms.ToTensor(), 
@@ -166,7 +166,7 @@ ood_dataset.data = ood_dataset.data[idx]
 
 ood_loader = torch.utils.data.DataLoader(dataset=ood_dataset, 
                          batch_size=opt.batch_size,
-                         shuffle=False)
+                         shuffle=False,num_workers=4)
 
 dimensions = list(map(int,opt.dimensions.split(',')))
 if len(dimensions)!=6:
