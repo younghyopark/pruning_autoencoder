@@ -53,6 +53,7 @@ parser.add_argument('--momentum', type=float, default=0.9, metavar='M',
 parser.add_argument('--wd', type=float, default=0.0005, metavar='M',
                     help='Weight decay (default: 0.0005)')
 parser.add_argument("--finetune", action='store_true')
+parser.add_argument("--freeze", action='store_true')
 
 
 
@@ -60,10 +61,12 @@ opt = parser.parse_args()
 print(opt)
 
 if opt.name is None:
+    opt.name = 'leave_{}_{}'.format(opt.leave, opt.layer.replace('.','_'))
     if opt.finetune:
-        opt.name = 'leave_{}_{}_finetune'.format(opt.leave, opt.layer.replace('.','_'))
-    else:
-        opt.name = 'leave_{}_{}'.format(opt.leave, opt.layer.replace('.','_'))
+        opt.name = opt.name + '_finetune'
+    if opt.freeze:
+        opt.name = opt.name + '_freeze'
+
 
 print(opt.name)
 
@@ -218,29 +221,72 @@ for remaining_connection in range(1,17):
             ckpt_name = '{}_sigmoid_{}_epoch_{}_run_{}'.format(model_name,opt.sigmoid,'100', opt.pretrained_run)
             ckpt_path = os.path.join('trained_models','pretrained','leave_out_{}'.format(opt.leave), ckpt_name + ".pth")
             print(ckpt_path)
-            pruned_model.load_state_dict(torch.load(ckpt_path, map_location='cpu'))
+            state_dict = torch.load(ckpt_path, map_location='cpu')
+            pruned_model.load_state_dict(state_dict)
+
+        if opt.freeze:
+            for param in pruned_model.parameters():
+                param.requires_grad = False
 
         if opt.layer == 'bottleneck.bottleneck':
             pruned_model.bottleneck.bottleneck = SupermaskLinear(16,16)
             pruned_model.bottleneck.bottleneck.remaining_connection = remaining_connection
+            if opt.finetune:
+                pruned_model.bottleneck.bottleneck.weight = state_dict['bottleneck.bottleneck.weight']
+            if opt.freeze:
+                pruned_model.bottleneck.bottleneck.weight.requires_grad = False
+
         elif opt.layer == 'encoder.fc4':
             pruned_model.encoder.fc4 = SupermaskLinear(64,16)
             pruned_model.encoder.fc4.remaining_connection = remaining_connection
+            if opt.finetune:
+                pruned_model.encoder.fc4.weight.data = state_dict['encoder.fc4.weight']
+            if opt.freeze:
+                pruned_model.encoder.fc4.weight.requires_grad = False
+
         elif opt.layer == 'decoder.fc4':
             pruned_model.decoder.fc4 = SupermaskLinear(16,64)
             pruned_model.decoder.fc4.remaining_connection = remaining_connection
+            if opt.finetune:
+                pruned_model.decoder.fc4.weight.data = state_dict['decoder.fc4.weight']
+            if opt.freeze:
+                pruned_model.decoder.fc4.requires_grad = False
+
         elif opt.layer == 'encoder.fc3':
             pruned_model.encoder.fc3 = SupermaskLinear(256,64)
             pruned_model.encoder.fc3.remaining_connection = remaining_connection
+            if opt.finetune:
+                pruned_model.encoder.fc3.weight.data = state_dict['encoder.fc3.weight']
+            if opt.freeze:
+                pruned_model.encoder.fc3.weight.requires_grad = False
+
         elif opt.layer == 'decoder.fc3':
             pruned_model.decoder.fc3 = SupermaskLinear(64,256)
             pruned_model.decoder.fc3.remaining_connection = remaining_connection
+            if opt.finetune:
+                pruned_model.decoder.fc3.weight.data = state_dict['decoder.fc3.weight']
+            if opt.freeze:
+                pruned_model.decoder.fc3.weight.requires_grad = False
+
+
         elif opt.layer == 'encoder.fc2':
             pruned_model.encoder.fc2 = SupermaskLinear(512,256)
             pruned_model.encoder.fc2.remaining_connection = remaining_connection
+            if opt.finetune:
+                pruned_model.encoder.fc2.weight.data = state_dict['encoder.fc2.weight']
+            if opt.freeze:
+                pruned_model.encoder.fc2.weight.requires_grad = False
+
+
         elif opt.layer == 'decoder.fc2':
             pruned_model.decoder.fc2 = SupermaskLinear(256,512)
             pruned_model.decoder.fc2.remaining_connection = remaining_connection
+            if opt.finetune:
+                pruned_model.decoder.fc2.weight.data = state_dict['decoder.fc2.weight']
+            if opt.freeze:
+                pruned_model.decoder.fc2.weight.requires_grad = False
+
+
         else:
             raise("Layer is wrong.")
 
@@ -272,10 +318,13 @@ for remaining_connection in range(1,17):
             # momentum=opt.momentum,
             # weight_decay=opt.wd,
         )
+        
+        require_grad_cnt =0
+        for p in pruned_model.parameters():
+            if p.requires_grad:
+                require_grad_cnt+=1 
 
-        # for p in pruned_model.parameters():
-        #     if p.requires_grad:
-        #         print(p.shape)
+        print("Parameters requiring gradients : {}".format(require_grad_cnt))
 
         loss_list = []
         total_step=0
