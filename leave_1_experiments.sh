@@ -1,9 +1,0 @@
-python final_testing.py --leave 1 -tech 0 --layer encoder.fc2;
-python final_testing.py --leave 1 -tech 1 --layer encoder.fc2;
-python final_testing.py --leave 1 -tech 2 --layer encoder.fc2;
-python final_testing.py --leave 1 -tech 3 --layer encoder.fc2;
-python final_testing.py --leave 1 -tech 4 --layer encoder.fc2;
-python final_testing.py --leave 1 -tech 5 --layer encoder.fc2;
-python final_testing.py --leave 1 -tech 6 --layer encoder.fc2;
-python final_testing.py --leave 1 -tech 7 --layer encoder.fc2;
-python final_testing.py --leave 1 -tech 8 --layer encoder.fc2;

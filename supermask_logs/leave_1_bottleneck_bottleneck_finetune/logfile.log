@@ -1,0 +1,26 @@
+ 
+Currently running leave_1_bottleneck_bottleneck_finetune experiment. 
+Starting the process with remaining connection 1 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.11182937404185643 / 9.261298179626465 / 7.10772705078125
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.6354383794111874 / 5.913642883300781 / 6.297633171081543
+Notification sent to chrome.
+ 
+Currently running leave_1_bottleneck_bottleneck_finetune experiment. 
+Starting the process with remaining connection 2 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.11393039498498028 / 9.205462455749512 / 7.05814790725708
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.5436976080264169 / 5.299490451812744 / 5.488001823425293
+Notification sent to chrome.
+ 
+Currently running leave_1_bottleneck_bottleneck_finetune experiment. 
+Starting the process with remaining connection 3 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10724578913760247 / 9.191412925720215 / 6.982489109039307
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.47946674418778 / 4.907715320587158 / 4.779279708862305
+Notification sent to chrome.
+ 
+Currently running leave_1_bottleneck_bottleneck_finetune experiment. 
+Starting the process with remaining connection 4 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.12051655895704287 / 9.245838165283203 / 7.11698055267334

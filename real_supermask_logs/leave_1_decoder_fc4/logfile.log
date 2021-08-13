@@ -1,0 +1,113 @@
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 1 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10197937242683323 / 9.598648071289062 / 7.163217067718506
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.389340151215864 / 6.6559882164001465 / 6.270345687866211
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 2 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.1000957087591404 / 9.625116348266602 / 7.164243221282959
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.5322512677932075 / 5.689486503601074 / 5.796043395996094
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 3 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10086838554827553 / 9.622322082519531 / 7.174289703369141
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.41321933754233225 / 6.293594837188721 / 6.033710956573486
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 4 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10136899304546165 / 9.580643653869629 / 7.144712924957275
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.43873585922960917 / 5.029848098754883 / 4.823329925537109
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 5 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10353560877678143 / 9.622109413146973 / 7.190484523773193
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.4512146216746052 / 4.357493877410889 / 4.146403789520264
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 6 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10463601104178935 / 9.62014102935791 / 7.201188087463379
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.45371875240700577 / 4.300882816314697 / 4.105731010437012
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 7 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.09883256184917671 / 9.569365501403809 / 7.089256763458252
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.3303556778003881 / 4.531026840209961 / 3.9712576866149902
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 8 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.0999459836857811 / 9.602812767028809 / 7.144923686981201
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.4012447107990389 / 4.224499225616455 / 3.8797969818115234
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 9 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.1019976594586939 / 9.614128112792969 / 7.173874855041504
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.4405561642950672 / 4.001349925994873 / 3.7865726947784424
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 10 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.1005485115697777 / 9.606362342834473 / 7.136387825012207
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.4813993057884916 / 3.743391275405884 / 3.6405231952667236
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 11 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10443048070544213 / 9.63349723815918 / 7.214380264282227
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.4984234888973368 / 3.7551589012145996 / 3.6763880252838135
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 12 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10397797605293299 / 9.59814739227295 / 7.18459415435791
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.5155980430888188 / 3.590644598007202 / 3.5505566596984863
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 13 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10129668969938206 / 9.631110191345215 / 7.178286075592041
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.4129866251233008 / 3.7108840942382812 / 3.464785099029541
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 14 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10372667844391273 / 9.64564323425293 / 7.211288928985596
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.4449458470299723 / 3.3130953311920166 / 3.1367146968841553
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 15 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.09940070216239183 / 9.5994291305542 / 7.129064083099365
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.40175808940271474 / 3.7126712799072266 / 3.3641669750213623
+Notification sent to chrome.
+ 
+Currently running leave_1_decoder_fc4 experiment. 
+Starting the process with remaining connection 16 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10242059676349352 / 9.592859268188477 / 7.1592535972595215
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.4928727784113638 / 3.602055788040161 / 3.5587167739868164
+Notification sent to chrome.
+Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7f665aab0f90>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /bot1923368350:AAFkUmZwb6OCljMTai031vY0A4zmi3tVDJQ/sendMessage

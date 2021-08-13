@@ -1,0 +1,112 @@
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 1 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.43952249794117426 / 9.214340209960938 / 8.918150901794434
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.3927024150017212 / 6.543664455413818 / 6.28848123550415
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 2 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.43293629495589636 / 9.190491676330566 / 8.852202415466309
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.4905608725121994 / 5.805419445037842 / 6.000367164611816
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 3 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.4412817177931152 / 9.19479751586914 / 8.907651901245117
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.5107383564601933 / 5.247142314910889 / 5.477578639984131
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 4 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.43679336202186103 / 9.202234268188477 / 8.889015197753906
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.8037306109104368 / 4.45615291595459 / 6.1096906661987305
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 5 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.4556818132966134 / 9.176558494567871 / 8.966330528259277
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.6724422914269848 / 4.816928863525391 / 5.753307819366455
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 6 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.4447888037801043 / 9.260865211486816 / 8.983138084411621
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.8032419050478736 / 4.131362438201904 / 5.554717540740967
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 7 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.4420948864292109 / 9.231568336486816 / 8.948716163635254
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.8375769779249572 / 3.902287721633911 / 5.551266193389893
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 8 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.4429868145868586 / 9.212143898010254 / 8.9327392578125
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.8168874744141785 / 3.682443380355835 / 5.087582588195801
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 9 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.4503706988565484 / 9.229901313781738 / 8.98804759979248
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.8487154151177938 / 3.4355709552764893 / 5.005786895751953
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 10 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.45225425844300415 / 9.221413612365723 / 8.99150276184082
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7837236531763566 / 3.2740650177001953 / 4.290726184844971
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 11 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.4461831063526912 / 9.209946632385254 / 8.939105987548828
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7512816196881829 / 3.124802350997925 / 3.9559741020202637
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 12 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.44515322502328336 / 9.168701171875 / 8.896388053894043
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7501117459271847 / 3.1998722553253174 / 4.050199031829834
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 13 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.43935334960552447 / 9.196000099182129 / 8.892950057983398
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7793066714991613 / 3.0131046772003174 / 3.9245188236236572
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 14 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.44223306006149304 / 9.30561637878418 / 9.016606330871582
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7959027191490576 / 3.066248893737793 / 4.005639553070068
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 15 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.44570674627937046 / 9.233064651489258 / 8.964383125305176
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.6349701204342765 / 2.761171340942383 / 3.1337804794311523
+Notification sent to chrome.
+ 
+Currently running leave_9_encoder_fc4_finetune_switch_10 experiment. 
+Starting the process with remaining connection 16 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.4291234302246305 / 9.094982147216797 / 8.73502254486084
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.6759655812623547 / 2.762416362762451 / 3.251012086868286
+Notification sent to chrome.

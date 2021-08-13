@@ -62,7 +62,8 @@ train_dataset.data = train_dataset.data[idx]
 
 train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
                          batch_size=opt.batch_size,
-                         shuffle=True)
+                         shuffle=True,
+                         num_workers=4)
 
 # valid_loader = DataLoader(dataset=test_dataset, 
 #                          batch_size=opt.batch_size,

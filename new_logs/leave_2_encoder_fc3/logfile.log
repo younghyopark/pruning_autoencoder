@@ -1,0 +1,1152 @@
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 1 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6404150588829188 / 8.943501472473145 / 9.716529846191406
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9284539473684211 / 5.9056315422058105 / 8.28294563293457
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 2 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6403226761474043 / 8.943385124206543 / 9.71595573425293
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9248016418411026 / 5.897054672241211 / 8.27603816986084
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 3 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6402031728661425 / 8.94519329071045 / 9.716514587402344
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9661739803539198 / 5.230478286743164 / 8.401711463928223
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 4 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6414785948661563 / 8.94963264465332 / 9.725830078125
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9750463966627251 / 4.664207935333252 / 8.258054733276367
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 5 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.640667301568367 / 8.958118438720703 / 9.728946685791016
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9782791441058301 / 4.32145357131958 / 7.960921287536621
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 6 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.640667301568367 / 8.958118438720703 / 9.728946685791016
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9786897340414497 / 4.323798656463623 / 7.933133602142334
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 7 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6409168970292305 / 8.956131935119629 / 9.727954864501953
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9855761916616532 / 3.988300323486328 / 7.974703788757324
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 8 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6409168970292305 / 8.956131935119629 / 9.727954864501953
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9838221082366934 / 3.9916088581085205 / 7.863506317138672
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 9 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6420777320222115 / 8.94546890258789 / 9.723797798156738
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9845581447212828 / 3.9983725547790527 / 7.927289962768555
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 10 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6417124690544849 / 8.948310852050781 / 9.724893569946289
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.978974445746807 / 4.0174760818481445 / 7.6435227394104
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 11 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6402511470586201 / 8.959266662597656 / 9.726130485534668
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.976907557620895 / 3.7315618991851807 / 7.084009170532227
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 12 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6407399651819734 / 8.949821472167969 / 9.726679801940918
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9763769241540983 / 3.732456684112549 / 7.0953450202941895
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 13 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396831823226771 / 8.947887420654297 / 9.718265533447266
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9786037262549359 / 3.5198745727539062 / 6.861761569976807
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 14 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.63967551077388 / 8.947948455810547 / 9.718301773071289
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9789896807944181 / 3.5637660026550293 / 7.066596984863281
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 15 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396862077222026 / 8.947949409484863 / 9.718323707580566
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9789515391503987 / 3.390197277069092 / 6.617530822753906
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 16 using tech 0!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396862077222026 / 8.947949409484863 / 9.718323707580566
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9787022678394843 / 3.517270803451538 / 6.819889545440674
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 1 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7103982765595502 / 7.138232707977295 / 7.853898048400879
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 2 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7190303897060348 / 7.138199329376221 / 7.865216255187988
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 3 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7197146702487396 / 7.136244773864746 / 7.877444744110107
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 4 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7242674103098702 / 7.135312080383301 / 7.904422283172607
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 5 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7179703653472467 / 7.137373447418213 / 7.887984752655029
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 6 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7186169904708559 / 7.1380462646484375 / 7.866509914398193
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 7 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7095030284249252 / 7.1407470703125 / 7.8713459968566895
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 8 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.713285101981896 / 7.137146472930908 / 7.867554664611816
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 9 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7071256046477051 / 7.144539833068848 / 7.878175735473633
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 10 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7152337834263427 / 7.139657974243164 / 7.867619037628174
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 11 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7186402752422048 / 7.135587215423584 / 7.862961292266846
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 12 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7141246503502549 / 7.136569499969482 / 7.862941741943359
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 13 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7116289658665782 / 7.139429569244385 / 7.874479293823242
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 14 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7199302839899315 / 7.1368608474731445 / 7.899360179901123
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 15 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7146214101473628 / 7.1381940841674805 / 7.859715938568115
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 16 using tech 1!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.63987021684335 / 8.943807601928711 / 9.714716911315918
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9219202189179098 / 5.917277812957764 / 8.24827766418457
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 1 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7079253365973072 / 7.144958972930908 / 7.87852668762207
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 2 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7123423658797169 / 7.138354778289795 / 7.880612850189209
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 3 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7237587109896342 / 7.136760711669922 / 7.894278526306152
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 4 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7136282147030959 / 7.138689994812012 / 7.845510959625244
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 5 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398440147224584 / 8.942561149597168 / 9.712839126586914
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9211846686582439 / 5.871273994445801 / 8.226346015930176
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 6 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6397825342820986 / 8.94959831237793 / 9.71757984161377
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9612438757269602 / 5.219088077545166 / 8.279755592346191
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 7 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6397825342820986 / 8.94959831237793 / 9.71757984161377
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9500743708033387 / 5.256860256195068 / 8.211255073547363
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 8 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6397825342820986 / 8.94959831237793 / 9.71757984161377
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9559838945017252 / 5.215266227722168 / 8.317609786987305
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 9 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6397825342820986 / 8.94959831237793 / 9.71757984161377
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9548847020240786 / 5.230896472930908 / 8.302539825439453
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 10 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396653000504811 / 8.957050323486328 / 9.72427749633789
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9728186221120401 / 4.739687442779541 / 8.244179725646973
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 11 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396653000504811 / 8.957050323486328 / 9.72427749633789
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9734806443582351 / 4.725614547729492 / 8.285940170288086
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 12 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396653000504811 / 8.957050323486328 / 9.72427749633789
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9715780462315623 / 4.7365217208862305 / 8.188698768615723
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 13 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396653000504811 / 8.957050323486328 / 9.72427749633789
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9723917706539703 / 4.726166725158691 / 8.19489574432373
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 14 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396653000504811 / 8.957050323486328 / 9.72427749633789
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.973415166068502 / 4.744272232055664 / 8.230024337768555
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 15 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396653000504811 / 8.957050323486328 / 9.72427749633789
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9734872354072015 / 4.733632564544678 / 8.274393081665039
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 16 using tech 2!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6396718910994474 / 8.957139015197754 / 9.724403381347656
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9785358708655756 / 4.477872371673584 / 8.146943092346191
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 1 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7228724850285944 / 7.137544631958008 / 7.86965274810791
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 2 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399194876356243 / 8.944703102111816 / 9.715913772583008
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9129324592521904 / 6.006934642791748 / 8.183072090148926
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 3 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399194876356243 / 8.944703102111816 / 9.715913772583008
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9085384446161721 / 6.062053680419922 / 8.24560546875
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 4 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399194876356243 / 8.944703102111816 / 9.715913772583008
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9170829832513882 / 6.000484466552734 / 8.21314525604248
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 5 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399194876356243 / 8.944703102111816 / 9.715913772583008
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9194492238553617 / 5.998218536376953 / 8.26082706451416
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 6 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399194876356243 / 8.944703102111816 / 9.715913772583008
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9195136216452642 / 6.002352714538574 / 8.2621488571167
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 7 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399194876356243 / 8.944703102111816 / 9.715913772583008
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9030038543589956 / 6.14129638671875 / 8.170777320861816
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 8 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399194876356243 / 8.944703102111816 / 9.715913772583008
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9157348436127766 / 6.065417289733887 / 8.2457857131958
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 9 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399091148372509 / 8.944267272949219 / 9.71528434753418
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9519323442870083 / 5.36796236038208 / 8.123424530029297
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 10 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399091148372509 / 8.944267272949219 / 9.71528434753418
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9596588905254859 / 5.3433403968811035 / 8.25338363647461
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 11 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399091148372509 / 8.944267272949219 / 9.71528434753418
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9607128640852229 / 5.351231098175049 / 8.276144027709961
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 12 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399091148372509 / 8.944267272949219 / 9.71528434753418
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9609445232488988 / 5.326026439666748 / 8.343700408935547
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 13 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398806976917066 / 8.94687271118164 / 9.718170166015625
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9757035566596823 / 4.825329303741455 / 8.223226547241211
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 14 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398806976917066 / 8.94687271118164 / 9.718170166015625
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9728891787509767 / 4.743485450744629 / 8.232175827026367
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 15 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398806976917066 / 8.94687271118164 / 9.718170166015625
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9756232755222702 / 4.54157829284668 / 7.9108567237854
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 16 using tech 3!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398806976917066 / 8.94687271118164 / 9.718170166015625
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.975244560331653 / 4.471530437469482 / 7.9874958992004395
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 1 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6404150588829188 / 8.943501472473145 / 9.716529846191406
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9189241549626924 / 6.027805328369141 / 8.27426815032959
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 2 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6402968522014536 / 8.945308685302734 / 9.717089653015137
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9621295614380847 / 5.229161739349365 / 8.384018898010254
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 3 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6402031728661425 / 8.94519329071045 / 9.716514587402344
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9622257259230063 / 5.277836799621582 / 8.429157257080078
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 4 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6400925296834914 / 8.954751014709473 / 9.72601318359375
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9739450431854172 / 4.67379903793335 / 8.16506576538086
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 5 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.640667301568367 / 8.958118438720703 / 9.728946685791016
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.976741160646986 / 4.32614803314209 / 7.938914775848389
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 6 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6410007438160834 / 8.955986022949219 / 9.728333473205566
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9786138829533432 / 4.328446865081787 / 7.951535224914551
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 7 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6410007438160834 / 8.955986022949219 / 9.728333473205566
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9786698528445671 / 4.294921875 / 7.934158802032471
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 8 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.641324623640299 / 8.95358943939209 / 9.727336883544922
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9845154649779752 / 4.012867450714111 / 7.933698654174805
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 9 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6423535296039665 / 8.943625450134277 / 9.723237037658691
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9812760184359203 / 4.046646595001221 / 7.819482803344727
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 10 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6419418591685165 / 8.946646690368652 / 9.72434139251709
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9831834247868391 / 4.008377552032471 / 7.801753044128418
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 11 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6419418591685165 / 8.946646690368652 / 9.72434139251709
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9834124367259299 / 3.987788438796997 / 7.681547164916992
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 12 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.641631593642166 / 8.95041561126709 / 9.725329399108887
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9793491090630597 / 3.7286932468414307 / 7.22797155380249
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 13 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6417552568477757 / 8.949138641357422 / 9.724628448486328
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9792385199054002 / 3.7540316581726074 / 7.289660453796387
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 14 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6417103620798152 / 8.949718475341797 / 9.72502613067627
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9781523474507121 / 3.7529540061950684 / 7.226057052612305
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 15 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.642067035073889 / 8.940196990966797 / 9.724803924560547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.981275370136022 / 3.7495930194854736 / 7.4753522872924805
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 16 using tech 4!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6420057167085037 / 8.939846992492676 / 9.724361419677734
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9795720702030993 / 3.723641872406006 / 7.33608341217041
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 1 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6404150588829188 / 8.943501472473145 / 9.716529846191406
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9234902391967303 / 6.020171642303467 / 8.35377311706543
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 2 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6402968522014536 / 8.945308685302734 / 9.717089653015137
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9629182182644234 / 5.2406134605407715 / 8.414811134338379
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 3 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6402031728661425 / 8.94519329071045 / 9.716514587402344
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9614890951635099 / 5.2581987380981445 / 8.377911567687988
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 4 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6400925296834914 / 8.954751014709473 / 9.72601318359375
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9739566045336044 / 4.684248924255371 / 8.243692398071289
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 5 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.640667301568367 / 8.958118438720703 / 9.728946685791016
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9797933565684017 / 4.315214157104492 / 8.012131690979004
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 6 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.640667301568367 / 8.958118438720703 / 9.728946685791016
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9791031873016204 / 4.3151326179504395 / 7.967222690582275
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 7 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6409168970292305 / 8.956131935119629 / 9.727954864501953
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9855640900635506 / 4.001179218292236 / 7.943825721740723
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 8 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6420777320222115 / 8.94546890258789 / 9.723797798156738
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9830913662012738 / 4.025904655456543 / 7.8005547523498535
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 9 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6417124690544849 / 8.948310852050781 / 9.724893569946289
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9826827211653494 / 3.993257999420166 / 7.684610843658447
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 10 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6417124690544849 / 8.948310852050781 / 9.724893569946289
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9826443634213639 / 3.9982476234436035 / 7.7434611320495605
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 11 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6421355387631474 / 8.939556121826172 / 9.725342750549316
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9762737904452696 / 4.046030521392822 / 7.57591438293457
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 12 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6420659545740584 / 8.93932056427002 / 9.724883079528809
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9797224757795158 / 4.010497093200684 / 7.527434349060059
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 13 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6420784343471014 / 8.93932056427002 / 9.724916458129883
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9759961560138029 / 3.783055305480957 / 7.078328609466553
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 14 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6406923151394449 / 8.949370384216309 / 9.726231575012207
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9788681785884695 / 3.7396140098571777 / 7.358649730682373
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 15 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6406923151394449 / 8.949370384216309 / 9.726231575012207
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9762775181696852 / 3.7325427532196045 / 7.218217372894287
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 16 using tech 5!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6406837791907835 / 8.949405670166016 / 9.726243019104004
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9813065965811257 / 3.75034236907959 / 7.482058525085449
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 1 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7153735460794278 / 7.13910436630249 / 7.857224941253662
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 2 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7175082355697088 / 7.136724472045898 / 7.876148223876953
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 3 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7136658160972001 / 7.140504360198975 / 7.882338047027588
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 4 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7150599850285944 / 7.138712406158447 / 7.859041690826416
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 5 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7121567360088238 / 7.142553329467773 / 7.896066188812256
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 6 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7141541479956296 / 7.1377058029174805 / 7.869099140167236
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 7 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7195326600522789 / 7.138143062591553 / 7.896562099456787
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 8 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7187189896548624 / 7.135643482208252 / 7.890449047088623
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 9 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.721718673284512 / 7.140766620635986 / 7.854376316070557
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 10 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7144837004439557 / 7.140725135803223 / 7.894356727600098
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 11 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7145762992794363 / 7.13788366317749 / 7.856407642364502
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 12 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7125232955763472 / 7.1412811279296875 / 7.889328479766846
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 13 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7162542614913319 / 7.136833667755127 / 7.86323881149292
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 14 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7138027154257343 / 7.137709617614746 / 7.876352310180664
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 15 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7113525740099164 / 7.140227794647217 / 7.871888637542725
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 16 using tech 6!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7186831170604874 / 7.138978481292725 / 7.870641231536865
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 1 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7167223880429294 / 7.138462543487549 / 7.898141384124756
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 2 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7172387589119626 / 7.1386027336120605 / 7.893816947937012
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 3 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7194846858598013 / 7.137122631072998 / 7.872339248657227
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 4 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7225354231064457 / 7.1364216804504395 / 7.894778728485107
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 5 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7160842448429905 / 7.139019012451172 / 7.878110885620117
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 6 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7146165478981252 / 7.1386613845825195 / 7.884286880493164
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 7 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7176535627969213 / 7.137480735778809 / 7.883019924163818
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 8 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7088105360835079 / 7.140701770782471 / 7.869863033294678
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 9 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7160523160729969 / 7.139649868011475 / 7.868953227996826
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 10 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7134092514124294 / 7.137334823608398 / 7.865891456604004
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 11 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7081820633570525 / 7.142101287841797 / 7.876380443572998
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 12 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7105500867857464 / 7.144482612609863 / 7.901294708251953
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 13 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7206654560746565 / 7.136839866638184 / 7.864712715148926
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 14 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7219788576437152 / 7.137147426605225 / 7.8689069747924805
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 15 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7153677654053343 / 7.138719081878662 / 7.8680806159973145
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 16 using tech 7!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398919348899447 / 8.94442081451416 / 9.715526580810547
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7109337722755845 / 7.140044689178467 / 7.855362892150879
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 1 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398863703158171 / 8.943702697753906 / 9.714695930480957
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9199926612451508 / 5.891592502593994 / 8.22966480255127
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 2 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7174508610287049 / 7.138336181640625 / 7.864707946777344
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 3 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398707030682738 / 8.94379997253418 / 9.714701652526855
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7103146458726636 / 7.142399311065674 / 7.875678062438965
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 4 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398630855444682 / 8.943502426147461 / 9.714350700378418
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.7177803594520396 / 7.138218402862549 / 7.877842426300049
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 5 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6392569791645056 / 8.94423770904541 / 9.716254234313965
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9722212677807052 / 4.752138614654541 / 8.215655326843262
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 6 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6402282944872035 / 8.945353507995605 / 9.718870162963867
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9331202479617452 / 5.862752437591553 / 8.33688735961914
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 7 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.641881027028055 / 8.951812744140625 / 9.738941192626953
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9628645174228436 / 5.240023612976074 / 8.422993659973145
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 8 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6377310973037639 / 8.968562126159668 / 9.727775573730469
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9733324538064714 / 4.7304205894470215 / 8.145547866821289
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 9 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.639800038379354 / 8.946396827697754 / 9.716720581054688
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.919841499318853 / 5.909364700317383 / 8.227816581726074
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 10 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6402891806526565 / 8.94135856628418 / 9.714470863342285
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9715424437621449 / 4.7607421875 / 8.05697250366211
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 11 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6382703747692053 / 8.931621551513672 / 9.689299583435059
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9630439884447025 / 5.2411088943481445 / 8.365633964538574
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 12 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6400251064940633 / 8.943178176879883 / 9.714109420776367
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9610573814562025 / 5.277224063873291 / 8.29804801940918
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 13 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6400556306142771 / 8.94989013671875 / 9.723139762878418
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9557435913394049 / 5.386837005615234 / 8.295914649963379
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 14 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6398637338443666 / 8.9439058303833 / 9.714787483215332
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9220998520147431 / 5.916014194488525 / 8.21204662322998
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 15 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6399559004799147 / 8.941015243530273 / 9.712154388427734
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9240513427587493 / 5.577988147735596 / 8.030980110168457
+Notification sent to chrome.
+ 
+Currently running leave_2_encoder_fc3 experiment. 
+Starting the process with remaining connection 16 using tech 8!
+Loaded pretrained model
+Pretrained model has AUROC / IND / OOD = 0.9827365840819036 / 2.6982970237731934 / 5.299961090087891
+Pruned model (before finetuning) has AUROC / IND / OOD = 0.6404617364755996 / 8.931563377380371 / 9.704682350158691
+Pruned model (after finetuning) has AUROC / IND / OOD = 0.9739457995352987 / 4.790119171142578 / 8.2615385055542
+Notification sent to chrome.

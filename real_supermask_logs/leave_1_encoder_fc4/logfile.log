@@ -1,0 +1,10 @@
+ 
+Currently running leave_1_encoder_fc4 experiment. 
+Starting the process with remaining connection 1 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10150376051939146 / 9.586832046508789 / 7.137531757354736
+ 
+Currently running leave_1_encoder_fc4 experiment. 
+Starting the process with remaining connection 2 on bottleneck using supermask!
+Loaded Supermask model
+Original model has AUROC / IND / OOD = 0.10167450574078629 / 9.616228103637695 / 7.1634955406188965

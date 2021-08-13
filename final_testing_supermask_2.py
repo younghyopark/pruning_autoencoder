@@ -197,13 +197,13 @@ logger.setLevel(logging.INFO)
 stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
-os.makedirs('./real_supermask_logs/{}/images'.format(opt.name),exist_ok = True)
+os.makedirs('./{}_supermask_logs/{}/images'.format(opt.dimensions,opt.name),exist_ok = True)
 
-file_handler = logging.FileHandler('./real_supermask_logs/{}/logfile.log'.format(opt.name))
+file_handler = logging.FileHandler('./{}_supermask_logs/{}/logfile.log'.format(opt.dimensions,opt.name))
 logger.addHandler(file_handler)
 
-if os.path.exists(os.path.join('real_supermask_logs',opt.name, 'logfile.log')):
-    x = open(os.path.join('real_supermask_logs',opt.name, 'logfile.log'),"r").readlines()
+if os.path.exists(os.path.join('{}_supermask_logs'.format(opt.dimensions),opt.name, 'logfile.log')):
+    x = open(os.path.join('{}_supermask_logs'.format(opt.dimensions),opt.name, 'logfile.log'),"r").readlines()
 else:
     x = None
 
@@ -229,61 +229,61 @@ for remaining_connection in range(1,17):
                 param.requires_grad = False
 
         if opt.layer == 'bottleneck.bottleneck':
-            pruned_model.bottleneck.bottleneck = SupermaskLinear(16,16)
+            pruned_model.bottleneck.bottleneck = SupermaskLinear(dimensions[3],dimensions[3])
             pruned_model.bottleneck.bottleneck.remaining_connection = remaining_connection
             if opt.finetune:
                 pruned_model.bottleneck.bottleneck.weight = state_dict['bottleneck.bottleneck.weight']
-            if opt.freeze:
+            # if opt.freeze:
                 pruned_model.bottleneck.bottleneck.weight.requires_grad = False
 
         elif opt.layer == 'encoder.fc4':
-            pruned_model.encoder.fc4 = SupermaskLinear(64,16)
+            pruned_model.encoder.fc4 = SupermaskLinear(dimensions[2],dimensions[3])
             pruned_model.encoder.fc4.remaining_connection = remaining_connection
             if opt.finetune:
                 pruned_model.encoder.fc4.weight.data = state_dict['encoder.fc4.weight']
-            if opt.freeze:
+            # if opt.freeze:
                 pruned_model.encoder.fc4.weight.requires_grad = False
 
         elif opt.layer == 'decoder.fc4':
-            pruned_model.decoder.fc4 = SupermaskLinear(16,64)
+            pruned_model.decoder.fc4 = SupermaskLinear(dimensions[3],dimensions[2])
             pruned_model.decoder.fc4.remaining_connection = remaining_connection
             if opt.finetune:
                 pruned_model.decoder.fc4.weight.data = state_dict['decoder.fc4.weight']
-            if opt.freeze:
+            # if opt.freeze:
                 pruned_model.decoder.fc4.requires_grad = False
 
         elif opt.layer == 'encoder.fc3':
-            pruned_model.encoder.fc3 = SupermaskLinear(256,64)
+            pruned_model.encoder.fc3 = SupermaskLinear(dimensions[1],dimensions[2])
             pruned_model.encoder.fc3.remaining_connection = remaining_connection
             if opt.finetune:
                 pruned_model.encoder.fc3.weight.data = state_dict['encoder.fc3.weight']
-            if opt.freeze:
+            # if opt.freeze:
                 pruned_model.encoder.fc3.weight.requires_grad = False
 
         elif opt.layer == 'decoder.fc3':
-            pruned_model.decoder.fc3 = SupermaskLinear(64,256)
+            pruned_model.decoder.fc3 = SupermaskLinear(dimensions[2],dimensions[1])
             pruned_model.decoder.fc3.remaining_connection = remaining_connection
             if opt.finetune:
                 pruned_model.decoder.fc3.weight.data = state_dict['decoder.fc3.weight']
-            if opt.freeze:
+            # if opt.freeze:
                 pruned_model.decoder.fc3.weight.requires_grad = False
 
 
         elif opt.layer == 'encoder.fc2':
-            pruned_model.encoder.fc2 = SupermaskLinear(512,256)
+            pruned_model.encoder.fc2 = SupermaskLinear(dimensions[0],dimensions[1])
             pruned_model.encoder.fc2.remaining_connection = remaining_connection
             if opt.finetune:
                 pruned_model.encoder.fc2.weight.data = state_dict['encoder.fc2.weight']
-            if opt.freeze:
+            # if opt.freeze:
                 pruned_model.encoder.fc2.weight.requires_grad = False
 
 
         elif opt.layer == 'decoder.fc2':
-            pruned_model.decoder.fc2 = SupermaskLinear(256,512)
+            pruned_model.decoder.fc2 = SupermaskLinear(dimensions[1],dimensions[0])
             pruned_model.decoder.fc2.remaining_connection = remaining_connection
             if opt.finetune:
                 pruned_model.decoder.fc2.weight.data = state_dict['decoder.fc2.weight']
-            if opt.freeze:
+            # if opt.freeze:pytho
                 pruned_model.decoder.fc2.weight.requires_grad = False
 
 
@@ -308,7 +308,7 @@ for remaining_connection in range(1,17):
 
         img_grid = check_reconstructed_images(pruned_model, None, 0, 0, "after_FT", ind_loader, ood_loader, None, model_name, opt.sigmoid, None, False)
         # plt.imshow(img_grid.cpu().numpy().transpose(1,2,0))
-        plt.imsave("./real_supermask_logs/{}/images/original_connection_{}.jpg".format(opt.name, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
+        plt.imsave("./{}_supermask_logs/{}/images/original_connection_{}.jpg".format(opt.dimensions,opt.name, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
 
 
         # NOTE: only pass the parameters where p.requires_grad == True to the optimizer! Important!
@@ -369,7 +369,7 @@ for remaining_connection in range(1,17):
             bot.sendMessage(chat_id = CHAT_ID, text=sending_text)
         
         img_grid = check_reconstructed_images(pruned_model, None, 0, 0, "after_FT", ind_loader, ood_loader, None, model_name, opt.sigmoid, None, False)
-        plt.imsave("./real_supermask_logs/{}/images/after_FT_connection_{}.jpg".format(opt.name, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
+        plt.imsave("./{}_supermask_logs/{}/images/after_FT_connection_{}.jpg".format(opt.dimensions,opt.name, remaining_connection),img_grid.cpu().numpy().transpose(1,2,0))
     else:
         print("Already have the result for this experiment")
 
